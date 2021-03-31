@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.use(cors());
 
 // Auth routes
-app.use(authRoutes);
+app.use('/auth', authRoutes);
 
 // Connecting to db
 mongoose

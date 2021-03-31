@@ -1,12 +1,24 @@
 require('dotenv').config();
-const passport = require('passport');
 const jwt = require('jsonwebtoken');
-
 const User = require('../models/User');
-const passportConfig = require('../passport');
+
+const STRATEGY_KEY = process.env.STRATEGY_KEY;
+
+const signToken = userID => {
+	return jwt.sign(
+		{
+			iss: STRATEGY_KEY,
+			sub: userID,
+		},
+		STRATEGY_KEY,
+		{
+			expiresIn: '1h',
+		}
+	);
+};
 
 const signup_post = (req, res) => {
-	const { username, password } = req.body;
+	const { username, email, password } = req.body;
 
 	// Check if username exists
 	User.findOne({ username }, async (err, user) => {
@@ -32,7 +44,7 @@ const signup_post = (req, res) => {
 
 		// Create new user
 		try {
-			const user = await User.create({ username, password });
+			const user = await User.create({ username, email, password });
 			res.status(201).json({
 				message: {
 					msgBody: 'Registered successfully',
@@ -50,6 +62,37 @@ const signup_post = (req, res) => {
 	});
 };
 
+const signin_post = (req, res) => {
+	if (req.isAuthenticated()) {
+		const { _id, username, email } = req.user;
+		const token = signToken(_id);
+		res.cookie('access_token', token, {
+			httpOnly: true,
+			sameSite: true,
+		});
+		res.status(200).json({
+			isAuthenticated: true,
+			user: {
+				username,
+				email,
+			},
+		});
+	}
+};
+
+const signout_get = (req, res) => {
+	res.clearCookie('access_token');
+	res.json({
+		user: {
+			username: '',
+			email: '',
+		},
+		success: true,
+	});
+};
+
 module.exports = {
 	signup_post,
+	signin_post,
+	signout_get,
 };

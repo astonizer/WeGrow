@@ -1,7 +1,7 @@
 require('dotenv').config();
 const passport = require('passport');
-const localStrategy = require('passport-local').Strategy;
-const jwtStrategy = require('passport-jwt').Strategy;
+const LocalStrategy = require('passport-local').Strategy;
+const JWTStrategy = require('passport-jwt').Strategy;
 const User = require('./models/User');
 
 // Environment variables
@@ -18,30 +18,29 @@ const cookieExtractor = req => {
 	return token;
 };
 
+const jwtOptions = {
+	jwtFromRequest: cookieExtractor,
+	secretOrKey: STRATEGY_KEY,
+};
+
 // Authorization for protected routes
 passport.use(
-	new jwtStrategy(
-		{
-			jwtFromRequest: cookieExtractor,
-			secretOrKey: STRATEGY_KEY,
-		},
-		(payload, done) => {
-			User.findById({ _id: payload.sub }, (err, user) => {
-				// Check for error
-				if (err) return done(err, false);
+	new JWTStrategy(jwtOptions, (payload, done) => {
+		User.findById({ _id: payload.sub }, (err, user) => {
+			// Check for error
+			if (err) return done(err, false);
 
-				// Check if user exists
-				if (user) return done(null, user);
+			// Check if user exists
+			if (user) return done(null, user);
 
-				return done(null, false);
-			});
-		}
-	)
+			return done(null, false);
+		});
+	})
 );
 
 // Local strategy using username and password
 passport.use(
-	new localStrategy((username, password, done) => {
+	new LocalStrategy((username, password, done) => {
 		User.findOne({ username }, (err, user) => {
 			// Error while fetching the user from database
 			if (err) return done(err);
