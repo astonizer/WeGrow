@@ -1,7 +1,7 @@
 require('dotenv').config();
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const JWTStrategy = require('passport-jwt').Strategy;
+const JwtStrategy = require('passport-jwt').Strategy;
 const User = require('./models/User');
 
 // Environment variables
@@ -25,7 +25,7 @@ const jwtOptions = {
 
 // Authorization for protected routes
 passport.use(
-	new JWTStrategy(jwtOptions, (payload, done) => {
+	new JwtStrategy(jwtOptions, (payload, done) => {
 		User.findById({ _id: payload.sub }, (err, user) => {
 			// Check for error
 			if (err) return done(err, false);
