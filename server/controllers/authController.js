@@ -1,9 +1,16 @@
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const passportConfig = require('../passport'); // This line is important for authentication
 
+// Environment variables
 const STRATEGY_KEY = process.env.STRATEGY_KEY;
 
+/**
+ *
+ * @param {Number} userID
+ * @returns a signed token
+ */
 const signToken = userID => {
 	return jwt.sign(
 		{
@@ -17,6 +24,12 @@ const signToken = userID => {
 	);
 };
 
+/**
+ *
+ * @param {Object} req
+ * @param {Object} res
+ * @description registers a new user in database
+ */
 const signup_post = (req, res) => {
 	const { username, email, password } = req.body;
 
@@ -62,6 +75,12 @@ const signup_post = (req, res) => {
 	});
 };
 
+/**
+ *
+ * @param {Object} req
+ * @param {Object} res
+ * @description authenticates user
+ */
 const signin_post = (req, res) => {
 	if (req.isAuthenticated()) {
 		const { _id, username, email } = req.user;
@@ -80,6 +99,12 @@ const signin_post = (req, res) => {
 	}
 };
 
+/**
+ *
+ * @param {Object} req
+ * @param {Object} res
+ * @description Logs out the user
+ */
 const signout_get = (req, res) => {
 	res.clearCookie('access_token');
 	res.json({
