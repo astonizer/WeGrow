@@ -1,0 +1,8 @@
+.navbar{
+    display: flex;
+    background-color: #ddd;
+}
+.navbar1{
+    margin: 10px;
+    padding: 10px;
+}
