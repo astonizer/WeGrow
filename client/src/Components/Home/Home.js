@@ -9,9 +9,9 @@ import AuthProvider from '../../Context/AuthContext';
 
 function Home() {
     return (
-        <Router>
+        
             <div>
-                <h1>Home</h1>
+                {/* <h1>Home</h1>
                 <Navbar />
                 <Switch>
                     <Route exact path='/'>
@@ -29,9 +29,9 @@ function Home() {
                         </AuthProvider>
                     </Route>            
                 </Switch>
-                <Footer />
+                <Footer /> */}
+                <h1>Hello</h1>
             </div>
-        </Router>
     )
 }
 
