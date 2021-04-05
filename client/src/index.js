@@ -1,16 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+
 import App from './App';
-import AuthProvider from './Context/AuthContext';
+import reducers from './reducers';
+import './index.css';
+
+// store
+const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
 ReactDOM.render(
 	<React.StrictMode>
-		<AuthProvider>
+		<Provider store={store}>
 			<App />
-		</AuthProvider>
-
+		</Provider>
 	</React.StrictMode>,
 	document.getElementById('root')
 );
-
