@@ -85,12 +85,9 @@ const signin_post = (req, res) => {
 	if (req.isAuthenticated()) {
 		const { _id, username, email } = req.user;
 		const token = signToken(_id);
-		res.cookie('access_token', token, {
-			httpOnly: true,
-			sameSite: true,
-		});
 		res.status(200).json({
 			isAuthenticated: true,
+			token,
 			user: {
 				username,
 				email,
@@ -106,8 +103,8 @@ const signin_post = (req, res) => {
  * @description Logs out the user
  */
 const signout_get = (req, res) => {
-	res.clearCookie('access_token');
 	res.json({
+		token: null,
 		user: {
 			username: '',
 			email: '',
