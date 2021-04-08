@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 const app = express();
 
 // Environment variables
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 const DBURI = process.env.DBURI;
 
 // Importing all routes
