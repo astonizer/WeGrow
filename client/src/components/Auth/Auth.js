@@ -30,79 +30,84 @@ const Auth = () => {
 	};
 
 	return (
-		<div>
-			<h3> {isSignup ? 'Sign Up' : 'Sign In'}</h3>
-			<form className="m-3" onSubmit={handleSubmit}>
-				{isSignup && (
+		<form className="m-3" onSubmit={handleSubmit}>
+			<div class="card text-center col-12 col-sm-9 col-md-7 col-lg-6 mx-auto p-0">
+				<div class="card-header bg-light">
+					<h3> {isSignup ? 'Sign Up' : 'Sign In'}</h3>						
+				</div>
+				<div class="card-body">
+					{isSignup && (
+						<div className="form-group row">
+							<label
+								htmlFor="email"
+								className="col-form-label mx-auto"
+							>
+								Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							</label>
+							<div className="col-12 col-sm-9 mx-auto">
+								<input
+									type="text"
+									className="form-control"
+									onChange={handelChange}
+									id="email"
+									placeholder="email@example.com"
+								/>
+							</div>
+						</div>
+					)}
+					<div className="form-group">
+						<div className="form-group row">
+							<label
+								htmlFor="username"
+								className="col-form-label mx-auto"
+							>
+								username
+							</label>
+							<div className="col-12 col-sm-9 mx-auto">
+								<input
+									type="text"
+									className="form-control"
+									onChange={handelChange}
+									id="username"
+									placeholder="username"
+								/>
+							</div>
+						</div>
+					</div>
 					<div className="form-group row">
 						<label
-							htmlFor="email"
-							className="col-sm-2 col-form-label m-2"
+							htmlFor="password"
+							className="col-form-label mx-auto"
 						>
-							Email
+							Password
 						</label>
-						<div className="col-sm-5">
+						<div className="col-12 col-sm-9 mx-auto">
 							<input
-								type="text"
-								className="form-control m-2"
+								type="password"
+								className="form-control"
+								autoComplete="cc-number"
 								onChange={handelChange}
-								id="email"
-								placeholder="email@example.com"
+								id="password"
+								placeholder="Password"
 							/>
 						</div>
 					</div>
-				)}
-				<div className="form-group">
-					<div className="form-group row">
-						<label
-							htmlFor="username"
-							className="col-sm-2 col-form-label m-2"
-						>
-							username
-						</label>
-						<div className="col-sm-5">
-							<input
-								type="text"
-								className="form-control m-2"
-								onChange={handelChange}
-								id="username"
-								placeholder="username"
-							/>
-						</div>
-					</div>
+					<button type="submit" className="col-5 btn btn-outline-dark">
+						{isSignup ? 'Sign Up' : 'Sign In'}
+					</button>
 				</div>
-				<div className="form-group row">
-					<label
-						htmlFor="password"
-						className="col-sm-2 col-form-label m-2"
-					>
-						Password
-					</label>
-					<div className="col-sm-5">
-						<input
-							type="password"
-							className="form-control m-2"
-							autoComplete="cc-number"
-							onChange={handelChange}
-							id="password"
-							placeholder="Password"
-						/>
-					</div>
-				</div>
-				<button type="submit" className="btn btn-outline-dark">
-					{isSignup ? 'Sign Up' : 'Sign In'}
-				</button>
 				<button
-					type="button"
-					className="btn btn-light"
-					onClick={switchMode}
-				>
-					{isSignup
-						? 'Already have an account ? Sign In'
-						: "Don't have account ? Sign Up"}
+						type="button"
+						className="card-footer bg-light btn btn-light"
+						onClick={switchMode}
+					>
+						{isSignup
+							? 'Already have an account ? Sign In'
+							: "Don't have account ? Sign Up"}
 				</button>
-			</form>
-		</div>
+				
+			</div>
+		</form>
 	);
 };
 

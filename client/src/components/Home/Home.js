@@ -9,16 +9,15 @@ function Home() {
     return (
         <Router>
             <div>
-                <h1>Home</h1>
                 <Navbar />
                 <Switch>
                     <Route exact path='/'>
                         <h1>Home route</h1>
                     </Route>                    
-                    <Route path='/auth'>
+                    <Route exact path='/auth'>
                         <Auth />
                     </Route>
-                    <Route path='/profile'>
+                    <Route exact path='/auth/profile'>
                         <Profile />
                     </Route>            
                 </Switch>

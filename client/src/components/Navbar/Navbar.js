@@ -27,12 +27,11 @@ function Navbar() {
 
     return (
         <div>
-            <h1>Navbar</h1>
             <ul className="navbar">
                 <Link className="navbar1" to="/">Home</Link>
                 {user ? (
                     <>
-                        <Link className="navbar1" to="/profile">Profile</Link>
+                        <Link className="navbar1" to="/auth/profile">Profile</Link>
                         <Link className="navbar1" to="/" onClick={signOut}>Sign Out</Link>
                     </>
                 ) : (
