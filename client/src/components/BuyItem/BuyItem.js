@@ -1,19 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
+import axios from 'axios';
 import Crops from './Crops/Crops';
+import './BuyItem.css';
 
-import './Buyer.css';
 
+function BuyItem() {
 
-function Buyer() {
+  const [crops, setCrops] = useState({});
+
+  useEffect(() => {
+    axios.get('/buy')
+    .then((data) => {
+      setCrops(data);
+    });
+  }, []);
 
   // const 
-
-
-
     return (
       <div className="container buyer">
-        <h1>Buyer</h1>
+        <h1>BuyItem => {crops.data}</h1>
         <Row>
           <Col lg={4} md={6}>
             <Crops />
@@ -41,4 +47,4 @@ function Buyer() {
     )
 }
 
-export default Buyer;
+export default BuyItem;

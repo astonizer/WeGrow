@@ -10,6 +10,8 @@ const app = express();
 // Importing all routes
 const authRoutes = require('./routes/authRoutes');
 const feedRoutes = require('./routes/feedRoutes');
+const buyRoutes = require('./routes/buy.js');
+
 
 // Environment variables
 const PORT = process.env.PORT || 5000;
@@ -25,6 +27,8 @@ app.use('/api/auth', authRoutes);
 
 // Private routes
 app.use('/api/feed', feedRoutes);
+
+app.use('/buy', buyRoutes);
 
 // Error handler
 app.use(errorHandler);

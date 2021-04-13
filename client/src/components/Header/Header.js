@@ -41,6 +41,11 @@ function Header({ history }) {
 						</Link>
 					</li>
 					<li>
+						<Link className="header_link" to="/buy">
+							Buy
+						</Link>
+					</li>
+					<li>
 						<Link className="header_link" to="/profile">
 							Profile
 						</Link>
