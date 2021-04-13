@@ -1,21 +1,48 @@
-import { AUTH, LOGOUT } from '../constants/actionTypes';
+import {
+	AUTH_ERROR,
+	AUTH_SUCCESS,
+	LOGIN_FAIL,
+	LOGIN_SUCCESS,
+	LOGOUT_SUCCESS,
+	REGISTER_FAIL,
+	REGISTER_SUCCESS,
+} from '../constants/authConstants';
 
-const authReducer = (state = { authData: JSON.parse(localStorage.getItem('profile')) }, action) => {
+const initialState = {
+	token: localStorage.getItem('authToken'),
+	isAuthenticated: null,
+};
+
+export default function authReducers(state = initialState, action) {
 	switch (action.type) {
-		case AUTH:
-			localStorage.setItem(
-				'profile',
-				JSON.stringify({ ...action?.data })
-			);
-			return { ...state, authData: action?.data };
+		case AUTH_SUCCESS:
+			return {
+				...state,
+				token: action.payload,
+				isAuthenticated: true,
+			};
 
-		case LOGOUT:
-			localStorage.clear();
-			return { ...state, authData: null };
+		case LOGIN_SUCCESS:
+		case REGISTER_SUCCESS:
+			localStorage.setItem('authToken', action.payload);
+			return {
+				...state,
+				token: action.payload,
+				isAuthenticated: true,
+			};
+
+		case AUTH_ERROR:
+		case LOGIN_FAIL:
+		case REGISTER_FAIL:
+		case LOGOUT_SUCCESS:
+			localStorage.removeItem('authToken');
+			return {
+				...state,
+				token: null,
+				isAuthenticated: false,
+			};
 
 		default:
 			return state;
 	}
-};
-
-export default authReducer;
+}

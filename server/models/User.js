@@ -1,43 +1,70 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
+// Environment variables
+const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_EXPIRY = process.env.JWT_EXPIRY;
 
 const userSchema = new mongoose.Schema({
 	username: {
 		type: String,
-		required: [true, 'No name found'],
+		required: [true, 'Empty username'],
 	},
 	email: {
 		type: String,
-		required: [true, 'No email found'],
+		unique: [true, 'Email already registered'],
+		match: [
+			/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+			'Invalid email',
+		],
+		required: [true, 'Empty email'],
 	},
 	password: {
 		type: String,
-		required: [true, 'No password found'],
-		minLength: [6, 'Short password'],
+		required: [true, 'Empty password'],
+		minlength: [6, 'Short password'],
+		select: false,
 	},
 });
 
+/**
+ *
+ * @description Hash registered user's password
+ *
+ */
+
 userSchema.pre('save', async function (next) {
-	// If password is already hashed, return from here
-	if (!this.isModified('password')) return next();
+	if (!this.isModified('password')) {
+		next();
+	}
 
 	const salt = await bcrypt.genSalt();
 	this.password = await bcrypt.hash(this.password, salt);
 	next();
 });
 
-userSchema.methods.comparePassword = function (password, callback) {
-	bcrypt.compare(password, this.password, (err, isMatch) => {
-		// If some error occured
-		if (err) return callback(err);
-		else {
-			// If required user doesn't match the credentials
-			if (!isMatch) return callback(null, isMatch);
+/**
+ *
+ * @param {Number} password user entered password
+ * @returns boolean value
+ * @description compares the passwords
+ *
+ */
 
-			// Return the user if there is a match
-			return callback(null, this);
-		}
-	});
+userSchema.methods.matchPasswords = async function (password) {
+	return await bcrypt.compare(password, this.password);
+};
+
+/**
+ *
+ * @returns signed token
+ *
+ */
+
+userSchema.methods.getSignedToken = function () {
+	return jwt.sign({ id: this._id }, JWT_SECRET, { expiresIn: JWT_EXPIRY });
 };
 
 const User = mongoose.model('user', userSchema);
