@@ -11,6 +11,7 @@ import Login from './components/Auth/Login/Login';
 import Register from './components/Auth/Register/Register';
 import Home from './components/Home/Home';
 import Header from './components/Header/Header';
+import SellItem from './components/SellItem/SellItem';
 
 function App() {
 	const history = useHistory();
@@ -24,6 +25,7 @@ function App() {
 			<Header history={history} />
 			<Switch>
 				<PrivateRoute exact path="/profile" component={Profile} />
+				<PrivateRoute exact path="/sell" component={SellItem} />
 				<Route exact path="/" component={Home} />
 				<Route
 					path="/auth/register"

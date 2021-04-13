@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../../redux/actions/authActions';
 import './Login.css';
 
@@ -10,6 +10,7 @@ function Login({ history }) {
 	});
 	// const [error, setError] = useState('');
 	const dispatch = useDispatch();
+	const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
 	useEffect(() => {
 		if (localStorage.getItem('authToken')) {
@@ -24,7 +25,13 @@ function Login({ history }) {
 	const handleSubmit = e => {
 		e.preventDefault();
 		dispatch(loginUser(user));
-		history.push('/');
+		if (isAuthenticated) {
+			history.push('/');
+		}
+		setUser({
+			email: '',
+			password: '',
+		});
 	};
 
 	return (
