@@ -28,7 +28,12 @@ function Register({ history }) {
 		dispatch(registerUser(user));
 		if (isAuthenticated) {
 			history.push('/');
-		} else console.log('error');
+		}
+		setUser({
+			username: '',
+			email: '',
+			password: '',
+		});
 	};
 
 	return (

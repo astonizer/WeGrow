@@ -23,7 +23,7 @@ export const registerUser = user => async dispatch => {
 	axios
 		.post('/api/auth/register', JSON.stringify(user), config)
 		.then(res => {
-			dispatch({ type: REGISTER_SUCCESS, payload: res.data });
+			dispatch({ type: REGISTER_SUCCESS, payload: res.data.token });
 		})
 		.catch(err => {
 			dispatch({ type: REGISTER_FAIL });

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 
 const connectDB = require('./config/db');
@@ -8,7 +9,6 @@ const app = express();
 
 // Importing all routes
 const authRoutes = require('./routes/authRoutes');
-require('dotenv').config();
 const feedRoutes = require('./routes/feedRoutes');
 
 // Environment variables
