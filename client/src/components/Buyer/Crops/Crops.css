@@ -1,0 +1,12 @@
+.crop{
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  background-color: #ccc;
+}
+
+.image{
+  margin: auto;
+  width: auto;
+  /* height: 150px; */
+}

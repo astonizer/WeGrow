@@ -1,28 +1,66 @@
-import { AUTH } from '../constants/actionTypes';
-import * as api from '../../api';
+import axios from 'axios';
+import { returnErrors } from './errorActions';
 
-export const signin = (formData, history) => async dispatch => {
-	try {
-		// log in the user...
-		const { data } = await api.signIn(formData);
+import {
+	AUTH_ERROR,
+	AUTH_SUCCESS,
+	LOGIN_FAIL,
+	LOGIN_SUCCESS,
+	LOGOUT_SUCCESS,
+	REGISTER_FAIL,
+	REGISTER_SUCCESS,
+} from '../constants/authConstants';
+// import { GET_ERRORS } from '../constants/errorConstants';
 
-		dispatch({ type: AUTH, data });
+export const registerUser = user => async dispatch => {
+	// Request headers
+	const config = {
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	};
 
-		history.push('/');
-	} catch (error) {
-		console.log(error);
-	}
+	axios
+		.post('/api/auth/register', JSON.stringify(user), config)
+		.then(res => {
+			dispatch({ type: REGISTER_SUCCESS, payload: res.data });
+		})
+		.catch(err => {
+			dispatch({ type: REGISTER_FAIL });
+			dispatch(returnErrors('Register failed', 404));
+		});
 };
 
-export const signup = (formData, history) => async dispatch => {
-	try {
-		// sign up the user...
-		const { data } = await api.signUp(formData);
+export const loginUser = user => async dispatch => {
+	// Request headers
+	const config = {
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	};
 
-		dispatch({ type: AUTH, data });
+	axios
+		.post('/api/auth/login', JSON.stringify(user), config)
+		.then(res => {
+			dispatch({ type: LOGIN_SUCCESS, payload: res.data.token });
+		})
+		.catch(err => {
+			dispatch({ type: LOGIN_FAIL });
+			dispatch(returnErrors('Register failed', 404));
+		});
+};
 
-		history.push('/');
-	} catch (error) {
-		console.log(error);
+export const logoutUser = () => dispatch => {
+	dispatch({ type: LOGOUT_SUCCESS });
+};
+
+export const loadUser = () => dispatch => {
+	const token = localStorage.getItem('authToken');
+
+	if (!token) {
+		dispatch(returnErrors('No token', 404));
+		return dispatch({ type: AUTH_ERROR });
 	}
+
+	dispatch({ type: AUTH_SUCCESS, payload: token });
 };

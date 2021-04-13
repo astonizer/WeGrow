@@ -1,41 +1,32 @@
-require('dotenv').config();
 const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const cookieParser = require('cookie-parser');
 
-// Initializing express app
+const connectDB = require('./config/db');
+const errorHandler = require('./middlewares/errorMiddlewares');
+
+// Initialize express app
 const app = express();
-
-// Environment variables
-const PORT = process.env.PORT || 5000;
-const DBURI = process.env.DBURI;
 
 // Importing all routes
 const authRoutes = require('./routes/authRoutes');
+require('dotenv').config();
+const feedRoutes = require('./routes/feedRoutes');
+
+// Environment variables
+const PORT = process.env.PORT || 5000;
 
 // Middlewares
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
-app.use(cors());
 
-// Auth routes
-app.use('/auth', authRoutes);
+// Database connection
+connectDB();
 
-// Connecting to db
-mongoose
-	.connect(DBURI, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-		useCreateIndex: true,
-	})
-	.then(result => {
-		console.log('Connected to mongodb');
-		app.listen(PORT, () => {
-			console.log(`Server listening at port ${PORT}`);
-		});
-	})
-	.catch(err => {
-		console.log(err);
-	});
+// Authentication routes
+app.use('/api/auth', authRoutes);
+
+// Private routes
+app.use('/api/feed', feedRoutes);
+
+// Error handler
+app.use(errorHandler);
+
+app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));

@@ -1,21 +1,24 @@
 const express = require('express');
-const authController = require('../controllers/authController');
-const passport = require('passport');
+const authControllers = require('../controllers/authControllers');
 
 const router = express.Router();
 
-router.post('/signup', authController.signup_post);
+/**
+ *
+ * @access Public
+ * @description Register new user
+ *
+ */
 
-router.post(
-	'/signin',
-	passport.authenticate('local', { session: false }),
-	authController.signin_post
-);
+router.post('/register', authControllers.register_post);
 
-router.get(
-	'/signout',
-	passport.authenticate('jwt', { session: false }),
-	authController.signout_get
-);
+/**
+ *
+ * @access Public
+ * @description Login user
+ *
+ */
+
+router.post('/login', authControllers.login_post);
 
 module.exports = router;
