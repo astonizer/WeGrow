@@ -13,6 +13,7 @@ import Home from './components/Home/Home';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import SellItem from './components/SellItem/SellItem';
+import Crop from './components/Crop/Crop';
 import BuyItem from './components/BuyItem/BuyItem';
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
 					history={history}
 				/>
 				<Route path="/auth/login" component={Login} history={history} />
+				<Route path="/crop" component={Crop} history={history} />
 			</Switch>
 			<Footer />
 		</div>
