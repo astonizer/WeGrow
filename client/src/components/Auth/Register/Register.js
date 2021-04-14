@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Row, Col, Card, Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import './Register.css';
 import { registerUser } from '../../../redux/actions/authActions';
@@ -17,7 +18,7 @@ function Register({ history }) {
 		if (localStorage.getItem('authToken')) {
 			history.push('/');
 		}
-	}, [history]);
+	}, [isAuthenticated, history]);
 
 	const handleChange = e => {
 		setUser({ ...user, [e.target.id]: e.target.value });
@@ -26,9 +27,6 @@ function Register({ history }) {
 	const handleSubmit = e => {
 		e.preventDefault();
 		dispatch(registerUser(user));
-		if (isAuthenticated) {
-			history.push('/');
-		}
 		setUser({
 			username: '',
 			email: '',
@@ -37,40 +35,63 @@ function Register({ history }) {
 	};
 
 	return (
-		<div>
-			<form className="register_form" onSubmit={handleSubmit}>
-				<h1>Register Form</h1>
-				<div>
-					<label>Username</label>
-					<input
-						type="text"
-						id="username"
-						value={user.username}
-						onChange={handleChange}
-					/>
-				</div>
-				<div>
-					<label>Email</label>
-					<input
-						type="text"
-						id="email"
-						value={user.email}
-						onChange={handleChange}
-					/>
-				</div>
-				<div>
-					<label>Password</label>
-					<input
-						type="password"
-						id="password"
-						value={user.password}
-						onChange={handleChange}
-					/>
-				</div>
-				<button>Register</button>
-			</form>
-			{/* {error && <span>{error}</span>} */}
-		</div>
+		<Row>
+			<Col className="mx-auto" sm={9} md={7} lg={6} >
+				<Card className="text-center">
+					<Card.Header className="bg-primary"><Card.Title>Registration Form</Card.Title></Card.Header>
+					<Card.Body>
+						<Form onSubmit={handleSubmit}>
+							<Form.Group controlId="username">
+								<Row>
+									<Col sm={3}>
+										<Form.Label>Username</Form.Label>
+									</Col>
+									<Col>
+										<Form.Control
+											type="text"
+											value={user.username}
+											onChange={handleChange}
+											placeholder="Enter Username"
+										/>
+									</Col>
+								</Row>
+							</Form.Group>
+							<Form.Group controlId="email">
+								<Row>
+									<Col sm={3}>
+										<Form.Label>Email address</Form.Label>
+									</Col>
+									<Col>
+										<Form.Control
+											type="email"
+											value={user.email}
+											onChange={handleChange}
+											placeholder="Enter email"
+										/>
+									</Col>
+								</Row>
+							</Form.Group>
+							<Form.Group controlId="password">
+								<Row>
+									<Col sm={3}>
+										<Form.Label>Password</Form.Label>
+									</Col>
+									<Col>
+										<Form.Control 
+											type="password" 
+											value={user.password}
+											onChange={handleChange}
+											placeholder="Enter Password" 
+										/>
+									</Col>
+								</Row>
+							</Form.Group>
+							<Button variant="outline-primary" type="submit">Register</Button>
+						</Form>
+					</Card.Body>
+				</Card>
+			</Col>		
+		</Row>
 	);
 }
 
