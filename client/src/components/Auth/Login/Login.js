@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Row, Col, Card, Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../../redux/actions/authActions';
 import './Login.css';
@@ -32,31 +33,48 @@ function Login({ history }) {
 	};
 
 	return (
-		<div>
-			<form className="login_form" onSubmit={handleSubmit}>
-				<h1>Login Form</h1>
-				<div>
-					<label>Email</label>
-					<input
-						type="text"
-						id="email"
-						value={user.email}
-						onChange={handleChange}
-					/>
-				</div>
-				<div>
-					<label>Password</label>
-					<input
-						type="password"
-						id="password"
-						value={user.password}
-						onChange={handleChange}
-					/>
-				</div>
-				<button>Login</button>
-			</form>
-			{/* {error && <span>{error}</span>} */}
-		</div>
+		<Row>
+			<Col className="mx-auto" sm={9} md={7} lg={6} >
+				<Card className="text-center">
+					<Card.Header className="bg-primary"><Card.Title>Login Form</Card.Title></Card.Header>
+					<Card.Body>
+						<Form onSubmit={handleSubmit}>							
+							<Form.Group controlId="email">
+								<Row>
+									<Col sm={3}>
+										<Form.Label>Email address</Form.Label>
+									</Col>
+									<Col>
+										<Form.Control
+											type="email"
+											value={user.email}
+											onChange={handleChange}
+											placeholder="Enter email"
+										/>
+									</Col>
+								</Row>
+							</Form.Group>
+							<Form.Group controlId="password">
+								<Row>
+									<Col sm={3}>
+										<Form.Label>Password</Form.Label>
+									</Col>
+									<Col>
+										<Form.Control 
+											type="password" 
+											value={user.password}
+											onChange={handleChange}
+											placeholder="Enter Password" 
+										/>
+									</Col>
+								</Row>
+							</Form.Group>
+							<Button variant="outline-primary" type="submit">Login</Button>
+						</Form>
+					</Card.Body>
+				</Card>
+			</Col>		
+		</Row>
 	);
 }
 

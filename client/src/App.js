@@ -11,8 +11,10 @@ import Login from './components/Auth/Login/Login';
 import Register from './components/Auth/Register/Register';
 import Home from './components/Home/Home';
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import SellItem from './components/SellItem/SellItem';
 import Crop from './components/Crop/Crop';
+import BuyItem from './components/BuyItem/BuyItem';
 
 function App() {
 	const history = useHistory();
@@ -27,6 +29,7 @@ function App() {
 			<Switch>
 				<PrivateRoute exact path="/profile" component={Profile} />
 				<PrivateRoute exact path="/sell" component={SellItem} />
+				<PrivateRoute exact path="/buy" component={BuyItem} />
 				<Route exact path="/" component={Home} />
 				<Route
 					path="/auth/register"
@@ -36,6 +39,7 @@ function App() {
 				<Route path="/auth/login" component={Login} history={history} />
 				<Route path="/crop" component={Crop} history={history} />
 			</Switch>
+			<Footer />
 		</div>
 	);
 }
