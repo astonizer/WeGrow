@@ -12,6 +12,7 @@ import Register from './components/Auth/Register/Register';
 import Home from './components/Home/Home';
 import Header from './components/Header/Header';
 import SellItem from './components/SellItem/SellItem';
+import Crop from './components/Crop/Crop';
 
 function App() {
 	const history = useHistory();
@@ -33,6 +34,7 @@ function App() {
 					history={history}
 				/>
 				<Route path="/auth/login" component={Login} history={history} />
+				<Route path="/crop" component={Crop} history={history} />
 			</Switch>
 		</div>
 	);
