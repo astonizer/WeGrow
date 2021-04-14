@@ -18,7 +18,7 @@ function Register({ history }) {
 		if (localStorage.getItem('authToken')) {
 			history.push('/');
 		}
-	}, [history]);
+	}, [isAuthenticated, history]);
 
 	const handleChange = e => {
 		setUser({ ...user, [e.target.id]: e.target.value });
@@ -27,9 +27,6 @@ function Register({ history }) {
 	const handleSubmit = e => {
 		e.preventDefault();
 		dispatch(registerUser(user));
-		if (isAuthenticated) {
-			history.push('/');
-		}
 		setUser({
 			username: '',
 			email: '',

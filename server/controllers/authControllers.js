@@ -28,7 +28,7 @@ const register_post = async (req, res, next) => {
  * @description Login user
  */
 
-const login_post = async (req, res) => {
+const login_post = async (req, res, next) => {
 	const { email, password } = req.body;
 
 	if (!email || !password) {
