@@ -12,6 +12,7 @@ const authRoutes = require('./routes/authRoutes');
 const buyRoutes = require('./routes/buyRoutes.js');
 const sellRoutes = require('./routes/sellRoutes.js');
 const profileRoutes = require('./routes/profileRoutes.js');
+const checkoutRoutes = require('./routes/checkoutRoutes.js');
 
 // Environment variables
 const PORT = process.env.PORT || 5000;
@@ -29,6 +30,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api/buy', buyRoutes);
 app.use('/api/sell', sellRoutes);
+app.use('/api/checkout', checkoutRoutes);
 
 // Error handler
 app.use(errorHandler);
