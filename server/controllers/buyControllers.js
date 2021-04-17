@@ -1,14 +1,18 @@
 const User = require('../models/User');
 
 const items_get = (req, res, next) => {
-	User.aggregate([
-		{
-			$unwind: '$sell',
-		},
-	])
-		.then(res => console.log(res))
-		.catch(err => console.log(err));
-	res.status(200).json({ done: true });
+	let items = [];
+	User.find()
+		.then(users => {
+			users.map(user => {
+				user.onSale.map(item => items.push(item));
+			});
+			res.status(200).json({ success: true, items });
+		})
+		.catch(err => {
+			console.log(err);
+			res.status(400).json({ success: false });
+		});
 };
 
 module.exports = {

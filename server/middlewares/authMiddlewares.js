@@ -21,9 +21,7 @@ const checkAuth = async (req, res, next) => {
 
 	try {
 		const decodedToken = jwt.verify(token, JWT_SECRET);
-
 		const user = await User.findById(decodedToken.id);
-
 		if (!user) {
 			return next(new ErrorResponse('No such user', 404));
 		}
