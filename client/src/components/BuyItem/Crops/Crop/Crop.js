@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Carousel from 'react-bootstrap/Carousel';
@@ -7,6 +8,9 @@ import './Crop.css';
 
 
 function Crop(props) {
+
+    const { id } = useParams();
+
     return (
         <div className="crop">
             <Card className="crop-card" style={{ width: '18rem' }}>
