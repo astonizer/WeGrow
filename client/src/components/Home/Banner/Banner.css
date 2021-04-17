@@ -1,0 +1,55 @@
+#soil {
+	animation: soil_up 1s ease-in-out infinite alternate;
+}
+
+#hands {
+	animation: soil_up 1s ease-in-out infinite alternate;
+}
+
+#right_tree {
+	animation: right_up 1s ease-in-out infinite alternate;
+}
+
+#centre_tree {
+	animation: centre_up 1s ease-in-out infinite alternate;
+}
+
+#left_tree {
+	animation: left_up 1s ease-in-out infinite alternate;
+}
+
+@keyframes soil_up {
+	from {
+		transform: translateY(-2%);
+	}
+	to {
+		transform: translateY(0%);
+	}
+}
+
+@keyframes left_up {
+	from {
+		transform: rotateZ(1deg);
+	}
+	to {
+		transform: rotateZ(0deg);
+	}
+}
+
+@keyframes centre_up {
+	from {
+		transform: rotateZ(1.2deg);
+	}
+	to {
+		transform: rotateZ(0deg);
+	}
+}
+
+@keyframes right_up {
+	from {
+		transform: rotateZ(1deg);
+	}
+	to {
+		transform: rotateZ(0deg);
+	}
+}
