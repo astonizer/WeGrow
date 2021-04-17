@@ -29,7 +29,7 @@ function App() {
 			<Switch>
 				<PrivateRoute exact path="/profile" component={Profile} />
 				<PrivateRoute exact path="/sell" component={SellItem} />
-				<PrivateRoute exact path="/buy" component={BuyItem} />
+				{/* <PrivateRoute exact path="/buy" component={BuyItems} /> */}
 				<Route exact path="/" component={Home} />
 				<Route
 					path="/auth/register"
@@ -37,8 +37,8 @@ function App() {
 					history={history}
 				/>
 				<Route path="/auth/login" component={Login} history={history} />
-				<Route path="/crop" component={Crop} history={history} />
-			</Switch>
+				<Route path="/items/:id" component={Crop} history={history} />
+			</Switch> 
 			<Footer />
 		</div>
 	);
