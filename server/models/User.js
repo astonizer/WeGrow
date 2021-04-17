@@ -22,6 +22,10 @@ const cropSchema = new mongoose.Schema({
 	},
 });
 
+const friendSchema = new mongoose.Schema({
+	username: String,
+});
+
 const userSchema = new mongoose.Schema({
 	username: {
 		type: String,
@@ -45,6 +49,7 @@ const userSchema = new mongoose.Schema({
 	onSale: [cropSchema],
 	sold: [cropSchema],
 	buy: [cropSchema],
+	friends: [friendSchema],
 });
 
 /**
