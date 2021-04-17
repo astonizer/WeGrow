@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Col, Card, Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import './Register.css';
+import '../Auth.css';
 import { registerUser } from '../../../redux/actions/authActions';
 
 function Register({ history }) {
@@ -36,9 +36,9 @@ function Register({ history }) {
 
 	return (
 		<Row>
-			<Col className="mx-auto" sm={9} md={7} lg={6} >
+			<Col className="register mx-auto" sm={9} md={7} lg={6} >
 				<Card className="text-center">
-					<Card.Header className="bg-primary"><Card.Title>Registration Form</Card.Title></Card.Header>
+					<Card.Header className="bg-color"><Card.Title>Registration Form</Card.Title></Card.Header>
 					<Card.Body>
 						<Form onSubmit={handleSubmit}>
 							<Form.Group controlId="username">
@@ -86,7 +86,7 @@ function Register({ history }) {
 									</Col>
 								</Row>
 							</Form.Group>
-							<Button variant="outline-primary" type="submit">Register</Button>
+							<Button variant="btn-light" className="bg-color button-color" type="submit">Register</Button>
 						</Form>
 					</Card.Body>
 				</Card>

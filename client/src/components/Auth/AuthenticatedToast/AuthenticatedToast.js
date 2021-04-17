@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Toast } from 'react-bootstrap';
-import './AuthenticatedToast.css';
+import '../Auth.css';
 
 function AuthenticatedToast() {
 	const [showToast, setShowToast] = useState(true);
