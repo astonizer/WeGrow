@@ -13,7 +13,7 @@ import Home from './components/Home/Home';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import SellItem from './components/SellItem/SellItem';
-import Crop from './components/Crop/Crop';
+import Crop from './components/BuyItem/Crops/Crop/Crop';
 import BuyItem from './components/BuyItem/BuyItem';
 
 function App() {

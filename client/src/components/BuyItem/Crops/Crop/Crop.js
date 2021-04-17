@@ -9,7 +9,7 @@ import './Crop.css';
 function Crop(props) {
     return (
         <div className="crop">
-            <Card className="crop-card" style={{ width: '35rem' }}>
+            <Card className="crop-card" style={{ width: '18rem' }}>
                 {/* <Card.Img variant="top" src="https://media.nationalgeographic.org/assets/photos/120/983/091a0e2f-b93d-481b-9a60-db520c87ec33.jpg" /> */}
                 <Carousel>
                     <Carousel.Item>
@@ -35,7 +35,7 @@ function Crop(props) {
                     </Carousel.Item>
                 </Carousel>
                 <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
+                    <Card.Title>Crop Name</Card.Title>
                     <Card.Text>
                         Some quick example text to build on the card title and make up the bulk of
                         the card's content.

@@ -1,8 +1,12 @@
 import React from 'react';
 import { Card, Badge } from 'react-bootstrap';
+import Crop from './Crop/Crop'
 
 import './Crops.css';
 
+// const cardHandler = () => {
+
+// }
 
 function Crops() {
     return (

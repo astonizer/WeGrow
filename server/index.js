@@ -10,7 +10,7 @@ const app = express();
 // Importing all routes
 const authRoutes = require('./routes/authRoutes');
 const feedRoutes = require('./routes/feedRoutes');
-const buyRoutes = require('./routes/buy.js');
+const buyRoutes = require('./routes/buyRoutes.js');
 
 
 // Environment variables
