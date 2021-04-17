@@ -7,6 +7,21 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET;
 const JWT_EXPIRY = process.env.JWT_EXPIRY;
 
+const cropSchema = new mongoose.Schema({
+	title: {
+		type: String,
+		required: [true, 'Empty crop title'],
+	},
+	description: {
+		type: String,
+		required: [true, 'Empty crop description'],
+	},
+	image: {
+		type: String,
+		required: [true, 'No image provided'],
+	},
+});
+
 const userSchema = new mongoose.Schema({
 	username: {
 		type: String,
@@ -27,6 +42,11 @@ const userSchema = new mongoose.Schema({
 		minlength: [6, 'Short password'],
 		select: false,
 	},
+	sell: {
+		onSale: [cropSchema],
+		sold: [cropSchema],
+	},
+	buy: [cropSchema],
 });
 
 /**

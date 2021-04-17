@@ -11,7 +11,7 @@ const app = express();
 const authRoutes = require('./routes/authRoutes');
 const feedRoutes = require('./routes/feedRoutes');
 const buyRoutes = require('./routes/buyRoutes.js');
-
+const sellRoutes = require('./routes/sellRoutes.js');
 
 // Environment variables
 const PORT = process.env.PORT || 5000;
@@ -27,8 +27,8 @@ app.use('/api/auth', authRoutes);
 
 // Private routes
 app.use('/api/feed', feedRoutes);
-
-app.use('/buy', buyRoutes);
+app.use('/api/buy', buyRoutes);
+app.use('/api/sell', sellRoutes);
 
 // Error handler
 app.use(errorHandler);

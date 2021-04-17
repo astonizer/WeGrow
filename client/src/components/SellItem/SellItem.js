@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 import FileBase from 'react-file-base64';
+import { sellItem } from '../../redux/actions/sellActions';
 
 function SellItem() {
 	const [item, setItem] = useState({
@@ -8,10 +10,11 @@ function SellItem() {
 		description: '',
 		selectedFile: '',
 	});
+	const dispatch = useDispatch();
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		// dispatch action
+		dispatch(sellItem(item));
 	};
 
 	const handleChange = e => {
