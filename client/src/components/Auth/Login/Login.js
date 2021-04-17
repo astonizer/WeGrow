@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Row, Col, Card, Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../../redux/actions/authActions';
-import './Login.css';
+import '../Auth.css';
 
 function Login({ history }) {
 	const [user, setUser] = useState({
@@ -34,9 +34,9 @@ function Login({ history }) {
 
 	return (
 		<Row>
-			<Col className="mx-auto" sm={9} md={7} lg={6} >
+			<Col className="login mx-auto" sm={9} md={7} lg={6} >
 				<Card className="text-center">
-					<Card.Header className="bg-primary"><Card.Title>Login Form</Card.Title></Card.Header>
+					<Card.Header className="bg-color"><Card.Title>Login Form</Card.Title></Card.Header>
 					<Card.Body>
 						<Form onSubmit={handleSubmit}>							
 							<Form.Group controlId="email">
@@ -69,7 +69,7 @@ function Login({ history }) {
 									</Col>
 								</Row>
 							</Form.Group>
-							<Button variant="outline-primary" type="submit">Login</Button>
+							<Button variant="btn-light" className="bg-color button-color" type="submit"> Login </Button>
 						</Form>
 					</Card.Body>
 				</Card>
