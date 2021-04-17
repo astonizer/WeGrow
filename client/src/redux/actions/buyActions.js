@@ -1,15 +1,19 @@
 import axios from 'axios';
-import { FETCH_ITEMS, FETCH_ITEMS_ERROR } from '../constants/buyConstants';
+import {
+	FETCH_ITEMS_SUCCESS,
+	FETCH_ITEMS_FAIL,
+	FETCH_ITEMS,
+} from '../constants/buyConstants';
 
 export const fetchItems = () => async dispatch => {
+	dispatch({ type: FETCH_ITEMS });
 	axios
 		.get('/api/buy')
 		.then(res => {
-			console.log(res);
-			dispatch({ type: FETCH_ITEMS, payload: res.data });
+			dispatch({ type: FETCH_ITEMS_SUCCESS, payload: res.data.items });
 		})
 		.catch(error => {
 			console.log(error);
-			dispatch({ type: FETCH_ITEMS_ERROR, payload: error });
+			dispatch({ type: FETCH_ITEMS_FAIL, payload: error });
 		});
 };

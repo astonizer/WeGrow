@@ -16,7 +16,7 @@ const cropSchema = new mongoose.Schema({
 		type: String,
 		required: [true, 'Empty crop description'],
 	},
-	image: {
+	selectedFile: {
 		type: String,
 		required: [true, 'No image provided'],
 	},
@@ -42,10 +42,8 @@ const userSchema = new mongoose.Schema({
 		minlength: [6, 'Short password'],
 		select: false,
 	},
-	sell: {
-		onSale: [cropSchema],
-		sold: [cropSchema],
-	},
+	onSale: [cropSchema],
+	sold: [cropSchema],
 	buy: [cropSchema],
 });
 
