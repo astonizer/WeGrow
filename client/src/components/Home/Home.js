@@ -1,6 +1,5 @@
 import React from 'react';
 import AuthenticatedToast from '../Auth/AuthenticatedToast/AuthenticatedToast';
-import Donate from '../Donate/Donate';
 import Banner from './Banner/Banner';
 import './Home.css';
 
@@ -27,7 +26,6 @@ function Home() {
 					</div>
 				</div>
 			</div>
-			<Donate />
 			<AuthenticatedToast />
 		</div>
 	);
