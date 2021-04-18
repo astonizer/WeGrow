@@ -20,8 +20,8 @@ const donate_post = async (req, res, next) => {
 			},
 		],
 		mode: 'payment',
-		success_url: 'https://example.com/success',
-		cancel_url: 'https://example.com/cancel',
+		success_url: 'http://localhost:5000/donate',
+		cancel_url: 'http://localhost:5000/donate',
 	});
 
 	res.json({ id: session.id });

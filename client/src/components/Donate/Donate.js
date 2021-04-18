@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
+import { Button, Container, Form } from 'react-bootstrap';
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
 const stripePromise = loadStripe(
@@ -8,6 +9,8 @@ const stripePromise = loadStripe(
 );
 
 function Donate() {
+	const [amount, setAmount] = useState(0);
+
 	const handleClick = async e => {
 		// Get Stripe.js instance
 		const stripe = await stripePromise;
@@ -37,9 +40,22 @@ function Donate() {
 	};
 
 	return (
-		<button role="link" onClick={handleClick}>
-			Checkout
-		</button>
+		<Container align="center" className="my-5">
+			<Form onSubmit={handleClick}>
+				<h1>Donate Money</h1>
+				<Form.Group controlId="email">
+					<Form.Control
+						type="number"
+						value={amount}
+						onChange={e => setAmount(e.target.value)}
+						placeholder="Enter amount to donate"
+						min="0"
+						max="1000000000"
+					/>
+				</Form.Group>
+				<Button role="link">Donate</Button>
+			</Form>
+		</Container>
 	);
 }
 
