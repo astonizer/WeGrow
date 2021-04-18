@@ -4,7 +4,8 @@ import './Banner.css';
 function Banner() {
 	return (
 		<svg
-			width="28vw"
+			width="40vw"
+			height="60vh"
 			viewBox="0 0 886 655"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
