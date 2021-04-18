@@ -1,21 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Carousel from 'react-bootstrap/Carousel';
+import { fetchItems } from '../../../../redux/actions/buyActions';
 
 import './Crop.css';
 
 
-function Crop(props) {
-
+function Crop() {
+    const [crops, setCrops] = useState([]);
+	const dispatch = useDispatch();
+	const buy = useSelector(state => state.buy);
     const { id } = useParams();
+
+	useEffect(() => {
+		dispatch(fetchItems());
+	}, []);
+
+	useEffect(() => {
+		setCrops(buy.items);
+	}, [buy]);
+
+    console.log(crops.length);
+
 
     return (
         <div className="crop">
-            <Card className="crop-card" style={{ width: '18rem' }}>
-                {/* <Card.Img variant="top" src="https://media.nationalgeographic.org/assets/photos/120/983/091a0e2f-b93d-481b-9a60-db520c87ec33.jpg" /> */}
-                <Carousel>
+        {
+            crops.length > 0 ? 
+            (<Card className="crop-card col-5" >
+                <Card.Img variant="top" src={crops[id].selectedFile} />
+                {/* <Carousel>
                     <Carousel.Item>
                         <img
                             className="d-block w-100"
@@ -37,16 +54,14 @@ function Crop(props) {
                             alt="Third slide"
                         />
                     </Carousel.Item>
-                </Carousel>
+                </Carousel> */}
                 <Card.Body>
-                    <Card.Title>Crop Name</Card.Title>
-                    <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                   </Card.Text>
+                    <Card.Title>Name : {crops[id].name}</Card.Title>
+                    <Card.Text>{crops[id].description}</Card.Text>
                     <Button variant="primary">Go somewhere</Button>
                 </Card.Body>
-            </Card>
+            </Card>):('')
+        }
         </div>
     )
 }
