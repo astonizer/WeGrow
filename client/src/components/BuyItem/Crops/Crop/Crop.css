@@ -4,3 +4,12 @@
 .crop-card{
     margin: auto;
 }
+
+.bid_info{
+    padding: 30px;
+    background-color: white;
+    max-width: 400px;
+    margin: auto;
+    border: 1px solid;
+    border-radius: 10px
+}

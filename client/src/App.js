@@ -14,7 +14,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import SellItem from './components/SellItem/SellItem';
 import Crop from './components/BuyItem/Crops/Crop/Crop';
-import BuyItems from './components/BuyItem/BuyItem';
+import BuyItem from './components/BuyItem/BuyItem';
 import Donate from './components/Donate/Donate';
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
 				<PrivateRoute exact path="/profile" component={Profile} />
 				<PrivateRoute exact path="/sell" component={SellItem} />
 				<PrivateRoute exact path="/donate" component={Donate} />
-				<PrivateRoute exact path="/buy" component={BuyItems} />
+				<PrivateRoute exact path="/buy" component={BuyItem} />
 				<Route exact path="/" component={Home} />
 				<Route
 					path="/auth/register"

@@ -6,23 +6,15 @@ import Crop from './Crop/Crop'
 import './Crops.css';
 
 function Crops({ crop, id }) {
-	const history = useHistory();
-
-	const currCrop = crop;
+	const history = useHistory();	
 
 	const handleClick = () => {
-		//  alert("Great Shot!");
-
-
-			history.push(`/crop/${id}`);
-		 	// <Crop crop={currCrop} />
-		
+		history.push(`/crop/${id}`);		
 	}
 	return (
 		<div className="container buyer">
-			{/* <h1>Crops</h1> */}
 			<Card className="crop" onClick={handleClick}>
-				<Card.Img className="image" src={crop.selectedFile} />
+				<Card.Img variant="top" className="image" src={crop.selectedFile} />
 				<Card.Body>
 					<Card.Text>
 						<Card.Title>{crop.title}</Card.Title>

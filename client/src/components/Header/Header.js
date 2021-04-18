@@ -12,7 +12,7 @@ function Header({ history }) {
 		history.push('/');
 	};
 	return (
-		<div className="header">
+		<div className="container-fluid header">
 			<nav className="nav_items">
 				<ul className="header_links">
 					<li>
