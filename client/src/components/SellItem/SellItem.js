@@ -25,8 +25,13 @@ function SellItem() {
 		});
 	};
 
-	const handleDone = ({ base64 }) => {
-		setItem({ ...item, selectedFile: base64 });
+	const handleDone = e => {
+		e.map(({ base64 }) => {
+			setItem({
+				...item,
+				selectedFile: [base64],
+			});
+		});
 	};
 
 	return (
@@ -67,11 +72,7 @@ function SellItem() {
 				<Form.Group>
 					<Form.Label>Input File</Form.Label>
 					<br />
-					<FileBase
-						type="file"
-						multiple={false}
-						onDone={handleDone}
-					/>
+					<FileBase type="file" multiple={true} onDone={handleDone} />
 				</Form.Group>
 				<Button variant="primary" type="submit">
 					Submit

@@ -28,7 +28,7 @@ function BuyItem() {
 				<Row>
 					{crops.map((crop, id) => (
 						<Col lg={4} md={6} key={id}>
-							<Crops crop={crop} />
+							<Crops crop={crop} id={id}/>
 						</Col>
 					))}
 				</Row>

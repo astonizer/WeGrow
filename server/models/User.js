@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET;
 const JWT_EXPIRY = process.env.JWT_EXPIRY;
 
-const cropSchema = new mongoose.Schema({
+const cropBuySchema = new mongoose.Schema({
 	title: {
 		type: String,
 		required: [true, 'Empty crop title'],
@@ -20,10 +20,62 @@ const cropSchema = new mongoose.Schema({
 		type: String,
 		required: [true, 'No image provided'],
 	},
+	buyDate: {
+		type: Date,
+		default: Date.now,
+	},
+	buyPrice: {
+		type: Number,
+		required: [true, 'Empty buy price'],
+	},
 });
 
-const friendSchema = new mongoose.Schema({
-	username: String,
+const cropSoldSchema = new mongoose.Schema({
+	title: {
+		type: String,
+		required: [true, 'Empty crop title'],
+	},
+	description: {
+		type: String,
+		required: [true, 'Empty crop description'],
+	},
+	selectedFile: {
+		type: String,
+		required: [true, 'No image provided'],
+	},
+	soldDate: {
+		type: Date,
+		default: Date.now,
+	},
+	finalPrice: {
+		type: Number,
+		required: [true, 'Empty final price'],
+	},
+});
+
+const cropOnSaleSchema = new mongoose.Schema({
+	title: {
+		type: String,
+		required: [true, 'Empty crop title'],
+	},
+	description: {
+		type: String,
+		required: [true, 'Empty crop description'],
+	},
+	selectedFile: [
+		{
+			type: String,
+			required: [true, 'No image provided'],
+		},
+	],
+	onSaleDate: {
+		type: Date,
+		default: Date.now,
+	},
+	initialPrice: {
+		type: Number,
+		required: [true, 'Empty initial price'],
+	},
 });
 
 const userSchema = new mongoose.Schema({
@@ -46,10 +98,9 @@ const userSchema = new mongoose.Schema({
 		minlength: [6, 'Short password'],
 		select: false,
 	},
-	onSale: [cropSchema],
-	sold: [cropSchema],
-	buy: [cropSchema],
-	friends: [friendSchema],
+	onSale: [cropOnSaleSchema],
+	sold: [cropSoldSchema],
+	buy: [cropBuySchema],
 });
 
 /**
