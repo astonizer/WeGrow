@@ -39,7 +39,7 @@ function App() {
 					history={history}
 				/>
 				<Route path="/auth/login" component={Login} history={history} />
-				<Route path="/items/:id" component={Crop} history={history} />
+				<Route path="/crop/:id" component={Crop} history={history} />
 			</Switch>
 			<Footer />
 		</div>
