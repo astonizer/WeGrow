@@ -1,18 +1,23 @@
-.homePage {
-	margin-top: 100px;
-}
-
 .banner_p1 {
 	margin: auto;
 	text-align: center;
 }
 
-.banner_p2 {
-	margin: auto;
-	text-align: center;
+.banner_p1 > h1{
+    font-size: 72px;
 }
 
-/* .banner_p2 > img{
+.banner_p1 > h2{
+    margin-top: 10px;
+    font-size: 40px;
+}
+
+.banner_p2{
+    margin: auto;
+    text-align: center;
+}
+
+.banner_p2 > img{
     height: 500px;
     width: 500px;
-} */
+} 

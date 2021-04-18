@@ -1,5 +1,4 @@
-.login_form {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+.login_img{
+width: 500px;
+height: 500px;
 }

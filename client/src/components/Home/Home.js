@@ -8,7 +8,7 @@ function Home() {
 		<div className="homePage">
 			<div className="container">
 				<div className="row">
-					<div className="banner_p1 col-lg-6">
+					<div className="banner_p1 col-lg-6 col-md-12 col-sm-12">
 						<h1>
 							{' '}
 							<b>
@@ -21,7 +21,7 @@ function Home() {
 							<b>IN A SNAP</b>
 						</h2>
 					</div>
-					<div className="banner_p2 col-lg-6">
+					<div className="banner_p2 col-lg-6 col-md-12 col-sm-12">
 						<Banner />
 					</div>
 				</div>

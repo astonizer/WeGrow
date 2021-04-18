@@ -1,0 +1,18 @@
+.authenticatedToast {
+	position: absolute;
+	bottom: 5vh;
+	right: 40vw;
+}
+
+.register, .login{
+	margin: 70px;	
+}
+
+.bg-color {
+	background: rgb(16, 185, 129, 0.1);
+	border-color: rgb(107,114,128);
+}
+
+.button-color:hover {
+	background: rgb(16, 185, 129);
+}
