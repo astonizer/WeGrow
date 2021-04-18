@@ -9,6 +9,7 @@ function SellItem() {
 		title: '',
 		description: '',
 		selectedFile: '',
+		initialPrice: 0
 	});
 	const dispatch = useDispatch();
 
@@ -49,6 +50,17 @@ function SellItem() {
 						as="textarea"
 						rows={3}
 						value={item.description}
+						onChange={handleChange}
+					/>
+				</Form.Group>
+				<Form.Group>
+					<Form.Label>Price</Form.Label>
+					<Form.Control
+						id="price"
+						type="text"
+						placeholder="Enter price"
+						rows={3}
+						value={item.initialPrice}
 						onChange={handleChange}
 					/>
 				</Form.Group>
