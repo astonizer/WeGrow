@@ -1,9 +1,9 @@
 import { CLEAR_ERRORS, GET_ERRORS } from '../constants/errorConstants';
 
-export const returnErrors = (message, status) => {
+export const returnErrors = message => {
 	return {
 		type: GET_ERRORS,
-		payload: { message, status },
+		payload: { message, status: 401 },
 	};
 };
 

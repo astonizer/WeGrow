@@ -24,7 +24,7 @@ const items_get = async (req, res, next) => {
 
 const bidCrop_post = async (req, res, next) => {
 	// data = {token, newBuyPrice, cropId}
-	const {token, newBuyPrice, cropId} = req.body;	
+	const { token, newBuyPrice, cropId } = req.body;
 
 	try {
 		const crop = await CropSell.findById(cropId);
@@ -32,7 +32,10 @@ const bidCrop_post = async (req, res, next) => {
 			const decodedToken = jwt.verify(token, JWT_SECRET);
 			const buyer = await User.findById(decodedToken.id);
 			await CropSell.updateOne({ _id: cropId }, { buyer: buyer });
-			await CropSell.updateOne({ _id: cropId }, { buyPrice: newBuyPrice });
+			await CropSell.updateOne(
+				{ _id: cropId },
+				{ buyPrice: newBuyPrice }
+			);
 		}
 		res.status(200).json({ success: true });
 	} catch (error) {

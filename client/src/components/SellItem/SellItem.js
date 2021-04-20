@@ -26,13 +26,14 @@ function SellItem() {
 	};
 
 	const handleDone = e => {
+
 		let data = [];
 		e.map(({ base64 }) => {
 			data.push(base64);
 		});
 		setItem({
 			...item,
-			selectedFile: [...data],
+			selectedFile: [...data]
 		});
 	};
 

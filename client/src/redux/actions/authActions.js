@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { returnErrors } from './errorActions';
+import { clearErrors, returnErrors } from './errorActions';
 
 import {
 	AUTH_ERROR,
@@ -13,6 +13,8 @@ import {
 // import { GET_ERRORS } from '../constants/errorConstants';
 
 export const registerUser = user => async dispatch => {
+	dispatch(clearErrors());
+
 	// Request headers
 	const config = {
 		headers: {
@@ -27,11 +29,13 @@ export const registerUser = user => async dispatch => {
 		})
 		.catch(err => {
 			dispatch({ type: REGISTER_FAIL });
-			dispatch(returnErrors('Register failed', 404));
+			dispatch(returnErrors(err.response.data.error));
 		});
 };
 
 export const loginUser = user => async dispatch => {
+	dispatch(clearErrors());
+
 	// Request headers
 	const config = {
 		headers: {
@@ -46,15 +50,18 @@ export const loginUser = user => async dispatch => {
 		})
 		.catch(err => {
 			dispatch({ type: LOGIN_FAIL });
-			dispatch(returnErrors('Register failed', 404));
+			dispatch(returnErrors(err.response.data.error));
 		});
 };
 
 export const logoutUser = () => dispatch => {
+	dispatch(clearErrors());
 	dispatch({ type: LOGOUT_SUCCESS });
 };
 
 export const loadUser = () => dispatch => {
+	dispatch(clearErrors());
+
 	const token = localStorage.getItem('authToken');
 
 	if (!token) {
