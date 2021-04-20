@@ -3,11 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import {
 	Card,
-	Button,
 	Col,
 	Row,
 	Carousel,
-	Jumbotron,
 	Badge,
 } from 'react-bootstrap';
 
@@ -46,18 +44,6 @@ function Crop() {
 		if (Number(a) > counter) dispatch(bidPrice(crop._id, Number(a)));
 	};
 
-	const addHandler = () => {
-		setCounter(prevCount => prevCount + 1);
-	};
-
-	const subtractHandler = () => {
-		setCounter(prevCount => {
-			if (prevCount <= 0) return;
-			return prevCount - 1;
-		});
-	};
-
-	console.log(crop?.selectedFile);
 	return (
 		<div className="crop">
 			{crop && id > -1 ? (
@@ -90,7 +76,7 @@ function Crop() {
 										</Card.Text>
 										<Card.Title>
 											<Badge variant="success">
-												Price: {crop.initialPrice}
+												Price: {counter}
 											</Badge>
 										</Card.Title>
 									</Card.Body>
@@ -106,7 +92,7 @@ function Crop() {
 							sm={12}
 						>
 							<div className="bid_info">
-								<h4>Highest Bid Till now: 320</h4>
+								<h4>Highest Bid Till now: {counter}</h4>
 								<h5>Want to place higher Bid? </h5>
 								<input
 									ref={countRef}
@@ -114,7 +100,7 @@ function Crop() {
 									min={0}
 									max={1000000}
 								/>
-								<button onClick={counterHandler}>Add</button>
+								<button className="btn btn-light bg-color pl-3 pr-3 pt-0 pb-0 ml-1" onClick={counterHandler}>Add</button>								
 							</div>
 						</Col>
 					</Row>
