@@ -26,6 +26,7 @@ export const registerUser = user => async dispatch => {
 			dispatch({ type: REGISTER_SUCCESS, payload: res.data.token });
 		})
 		.catch(err => {
+			console.log(err);
 			dispatch({ type: REGISTER_FAIL });
 			dispatch(returnErrors('Register failed', 404));
 		});

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Toast } from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 import '../Auth.css';
 
 function AuthenticatedToast() {
@@ -8,16 +8,19 @@ function AuthenticatedToast() {
 	const toggleShowToast = () => setShowToast(false);
 
 	return (
-		<Toast
-			show={showToast}
-			onClose={toggleShowToast}
-			delay={3000}
-			autohide
-			className="authenticatedToast"
-		>
-			<Toast.Header>Authenticated!</Toast.Header>
-			<Toast.Body>You are already authenticated</Toast.Body>
-		</Toast>
+		// <Toast
+		// 	show={showToast}
+		// 	onClose={toggleShowToast}
+		// 	delay={3000}
+		// 	autohide
+		// 	className="authenticatedToast"
+		// >
+		// 	<Toast.Header>Authenticated!</Toast.Header>
+		// 	<Toast.Body>You are already authenticated</Toast.Body>
+		// </Toast>
+		<>
+			
+		</>
 	);
 }
 

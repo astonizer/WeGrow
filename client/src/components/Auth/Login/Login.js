@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Col, Card, Form, Button } from 'react-bootstrap';
+import { Row, Col, Card, Form, Button, Alert } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../../redux/actions/authActions';
 import '../Auth.css';
@@ -11,13 +11,16 @@ function Login({ history }) {
 		email: '',
 		password: '',
 	});
-	// const [error, setError] = useState('');
+
 	const dispatch = useDispatch();
 	const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
+	console.log(isAuthenticated);
+
 	useEffect(() => {
 		if (localStorage.getItem('authToken')) {
-			history.push('/');
+			history.push('/profile');
+			alert('logged in');
 		}
 	}, [isAuthenticated, history]);
 
@@ -32,6 +35,8 @@ function Login({ history }) {
 			email: '',
 			password: '',
 		});
+		
+			
 	};
 
 	return (
