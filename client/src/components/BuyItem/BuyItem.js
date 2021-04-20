@@ -17,11 +17,10 @@ function BuyItem() {
 
 	useEffect(() => {
 		setCrops(buy.items);
-	}, [buy]);
+	}, [buy]);	
 
 	return (
 		<div className="container buyer">
-			{/* <h1>BuyItem {crops.data}</h1> */}
 			{buy.isLoading ? (
 				<h1>Loading...</h1>
 			) : (

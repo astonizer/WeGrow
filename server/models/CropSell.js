@@ -27,10 +27,6 @@ const cropSellSchema = new mongoose.Schema({
 		type: Date,
 		default: Date.now,
 	},
-	initialPrice: {
-		type: Number,
-		required: [true, 'Empty initial price'],
-	},
 	buyPrice: {
 		type: Number,
 		default: null,
