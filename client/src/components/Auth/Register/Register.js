@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Col, Card, Form, Button, Container } from 'react-bootstrap';
+import { Row, Col, Card, Form, Button, Container, Alert, Toast } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import '../Auth.css';
 import './Register.css';
@@ -12,13 +12,15 @@ function Register({ history }) {
 		email: '',
 		password: '',
 	});
-	// const [error, setError] = useState('');
+	const [register, setRegister] = useState(false);
 	const dispatch = useDispatch();
 	const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
 	useEffect(() => {
 		if (localStorage.getItem('authToken')) {
-			history.push('/');
+			setRegister(true);
+			alert("registered");
+			history.push('/profile');
 		}
 	}, [isAuthenticated, history]);
 
