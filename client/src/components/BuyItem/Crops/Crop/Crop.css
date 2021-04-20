@@ -1,6 +1,7 @@
-.crop{
-    text-align: center;
+#root > div > div {
+margin-top: 85px;
 }
+
 .crop-card{
     margin: auto;
 }

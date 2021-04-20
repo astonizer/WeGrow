@@ -2,6 +2,7 @@ import axios from 'axios';
 import { SELL_ITEM_FAIL, SELL_ITEM_SUCCESS } from '../constants/sellConstants';
 
 export const sellItem = item => async dispatch => {
+	// console.log(item);
 	// Request headers
 	const config = {
 		headers: {
@@ -17,6 +18,8 @@ export const sellItem = item => async dispatch => {
 	axios
 		.post('/api/sell', JSON.stringify(data), config)
 		.then(res => {
+			console.log(res);
+			console.log(res.data.token);
 			dispatch({ type: SELL_ITEM_SUCCESS, payload: res.data.token });
 		})
 		.catch(err => {

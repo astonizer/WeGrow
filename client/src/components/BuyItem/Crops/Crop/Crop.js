@@ -1,31 +1,40 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Card, Button, Col, Row, Carousel, Jumbotron } from 'react-bootstrap';
+import { Card, Button, Col, Row, Carousel, Jumbotron, Badge } from 'react-bootstrap';
 
 import { fetchItems } from '../../../../redux/actions/buyActions';
+import { bidPrice } from '../../../../redux/actions/buyActions';
 import './Crop.css';
 
 
 function Crop() {
     const countRef = useRef(0);
+    const [crop, setCrop] = useState({});
     const [counter, setCounter] = useState(0);
-    const [crops, setCrops] = useState([]);
     const dispatch = useDispatch();
     const buy = useSelector(state => state.buy);
     const { id } = useParams();
 
+    let a;
+
+    // Fetch Crops
     useEffect(() => {
         dispatch(fetchItems());
     }, []);
 
     useEffect(() => {
-        setCrops(buy.items);
+        setCrop(buy.items[id]);
     }, [buy]);
 
+    // Bidding
     const counterHandler = () => {
-        let a = countRef.current.value;
-        setCounter(prevCount => prevCount + Number(a));
+        a = countRef.current.value;
+        updateBid(a);
+        if (Number(a) > 0) setCounter(counter + Number(a));
+    }
+
+    const updateBid = (a) => {
     }
 
     const addHandler = () => {
@@ -33,56 +42,64 @@ function Crop() {
     }
 
     const subtractHandler = () => {
-        setCounter(prevCount => prevCount - 1);
+        setCounter(prevCount => {
+            if (prevCount <= 0)
+                return;
+            return prevCount - 1;
+        });
     }
 
+
+
+    // console.log(crop);
     return (
         <div className="crop">
-            {(crops.length > id && id > -1) ? (
+            {(crop && id > -1) ? (
                 <>
                     <Row>
-                        <Col lg={6} md={7} sm={12} className="mx-auto">
+                        <Col lg={7} md={12} sm={12} className="mx-auto">
                             <Card className="crop-card">
                                 <div className="crop-inside">
-                                        <Carousel>
-                                            <Carousel.Item>
-                                                <img
-                                                    className="d-block w-100"
-                                                    src={crops[id].selectedFile}
-                                                    alt="First slide"
-                                                />
-                                            </Carousel.Item>
-                                            <Carousel.Item>
-                                                <img
-                                                    className="d-block w-100"
-                                                    src={crops[id].selectedFile}
-                                                    alt="Second slide"
-                                                />
-                                            </Carousel.Item>
-                                            <Carousel.Item>
-                                                <img
-                                                    className="d-block w-100"
-                                                    src={crops[id].selectedFile}
-                                                    alt="Third slide"
-                                                />
-                                            </Carousel.Item>
-                                        </Carousel>
-                                        <Card.Body>
-                                            <Card.Title>Crop Name : <b> {crops[id].name} </b> </Card.Title>
-                                            <Card.Text>{crops[id].description}</Card.Text>
-                                        <Button style={{ height: "30px", width: "70px"}} variant="primary">Go somewhere</Button>
-                                        </Card.Body>
+                                    <Carousel>
+                                        <Carousel.Item>
+                                            <img
+                                                className="d-block w-100"
+                                                src={crop.selectedFile}
+                                                alt="First slide"
+                                            />
+                                        </Carousel.Item>
+                                        <Carousel.Item>
+                                            <img
+                                                className="d-block w-100"
+                                                src={crop.selectedFile}
+                                                alt="Second slide"
+                                            />
+                                        </Carousel.Item>
+                                        <Carousel.Item>
+                                            <img
+                                                className="d-block w-100"
+                                                src={crop.selectedFile}
+                                                alt="Third slide"
+                                            />
+                                        </Carousel.Item>
+                                    </Carousel>
+                                    <Card.Body>
+                                        <Card.Title>Crop Name: {crop.title} </Card.Title>
+                                        <Card.Text>{crop.description}</Card.Text>
+                                        <Card.Title>
+                                            <Badge variant="success">Price: {crop.initialPrice}</Badge>
+                                        </Card.Title>
+                                    </Card.Body>
                                 </div>
                             </Card>
                         </Col>
+
                         <Col className="my-5" style={{ textAlign: "center" }} md={12} lg={12} sm={12}>
                             <div className="bid_info">
-                                <h4>Highest Bid Till now: <b>320</b></h4>
+                                <h4>Highest Bid Till now: 320</h4>
                                 <h5>Want to place higher Bid? </h5>
                                 <input ref={countRef} type="number" min={0} max={1000000} />
                                 <button onClick={counterHandler}>Add</button>
-                                {/* <button onClick={addHandler}>+</button>
-                        <button onClick={subtractHandler}>-</button> */}
                             </div>
                         </Col>
                     </Row>

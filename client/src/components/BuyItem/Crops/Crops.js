@@ -19,7 +19,7 @@ function Crops({ crop, id }) {
 					<Card.Text>
 						<Card.Title>{crop.title}</Card.Title>
 						<Card.Title>
-							<Badge variant="success">Price: 199</Badge>
+							<Badge variant="success">Price: {crop.initialPrice}</Badge>
 						</Card.Title>
 					</Card.Text>
 					<Card.Text>{crop.description}</Card.Text>
