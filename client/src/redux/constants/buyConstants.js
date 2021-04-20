@@ -1,3 +1,5 @@
 export const FETCH_ITEMS = 'FETCH_ITEMS';
 export const FETCH_ITEMS_SUCCESS = 'FETCH_ITEMS_SUCCESS';
 export const FETCH_ITEMS_FAIL = 'FETCH_ITEMS_FAIL';
+export const BID_SUCCESS = 'BID_SUCCESS';
+export const BID_FAIL = 'BID_FAIL';

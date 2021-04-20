@@ -2,6 +2,8 @@ import {
 	FETCH_ITEMS,
 	FETCH_ITEMS_FAIL,
 	FETCH_ITEMS_SUCCESS,
+	BID_SUCCESS,
+	BID_FAIL
 } from '../constants/buyConstants';
 
 const initialState = {
@@ -9,7 +11,10 @@ const initialState = {
 	isLoading: false,
 };
 
-export default function buyReducers(state = initialState, action) {
+export default function buyReducers(state = initialState, action) {	
+	// console.log(action);
+	// console.log(action.payload);
+	// console.log(action.payload ? action.payload[0]._id : 'null');
 	switch (action.type) {
 		case FETCH_ITEMS:
 			return {
@@ -31,6 +36,22 @@ export default function buyReducers(state = initialState, action) {
 				isLoading: false,
 			};
 
+		default:
+			return state;
+	}
+}
+
+
+// const initialBidState = 0;
+
+export function bidReducers(state = initialState, action){
+	switch(action.type){
+		case BID_SUCCESS:
+			return {
+				...state, 
+				items: [...action.payload, action.payload.initialprice = 199 ]
+			};
+		case BID_FAIL:
 		default:
 			return state;
 	}

@@ -1,6 +1,7 @@
 require('dotenv').config();
 const User = require('../models/User');
 const CropSell = require('../models/CropSell');
+const jwt = require('jsonwebtoken');
 const ErrorResponse = require('../utils/errorResponse');
 
 const JWT_SECRET = process.env.JWT_SECRET;

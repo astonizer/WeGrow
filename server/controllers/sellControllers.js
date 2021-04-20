@@ -10,6 +10,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 const sellItem_post = async (req, res, next) => {
 	const data = req.body;
 	const item = data.item;
+	// console.log(item);
 	try {
 		const decodedToken = await jwt.verify(data.token, JWT_SECRET);
 		const seller = await User.findById(decodedToken.id);
@@ -17,7 +18,7 @@ const sellItem_post = async (req, res, next) => {
 			...item,
 			seller,
 			isSold: false,
-			buyPrice: 100,
+			buyPrice: 100
 		});
 		User.updateOne({ _id: decodedToken.id }, { $push: { sell: crop } })
 			.then(() => res.status(200).json({ success: true }))
