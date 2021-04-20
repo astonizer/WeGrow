@@ -1,5 +1,6 @@
 require('dotenv').config();
 const User = require('../models/User');
+const CropSell = require('../models/CropSell');
 const jwt = require('jsonwebtoken');
 const ErrorResponse = require('../utils/errorResponse');
 
@@ -9,16 +10,18 @@ const JWT_SECRET = process.env.JWT_SECRET;
 const sellItem_post = async (req, res, next) => {
 	const data = req.body;
 	const item = data.item;
-	console.log(item);
 	try {
-		const decodedToken = jwt.verify(data.token, JWT_SECRET);
-		User.updateOne({ _id: decodedToken.id }, { $push: { onSale: item } })
-			.then(da => {
-				console.log(da);
-				res.status(200).json({ success: true });
-			})
+		const decodedToken = await jwt.verify(data.token, JWT_SECRET);
+		const seller = await User.findById(decodedToken.id);
+		const crop = await CropSell.create({
+			...item,
+			seller,
+			isSold: false,
+			buyPrice: 100,
+		});
+		User.updateOne({ _id: decodedToken.id }, { $push: { sell: crop } })
+			.then(() => res.status(200).json({ success: true }))
 			.catch(err => next(new ErrorResponse('Error selling crop', 401)));
-		User.findById(decodedToken.id).then(res => console.log(res));
 	} catch (error) {
 		console.log(error);
 		return next(new ErrorResponse('Unauthorized user', 401));
