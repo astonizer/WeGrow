@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Col, Card, Form, Button, Container, Alert, Toast } from 'react-bootstrap';
+import {
+	Row,
+	Col,
+	Card,
+	Form,
+	Button,
+	Container,
+	Alert,
+	Toast,
+} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../../../redux/actions/authActions';
-import register from '../../../assets/register.svg';
+import imgR from '../../../assets/register.svg';
 import '../Auth.css';
 import './Register.css';
 
@@ -12,16 +21,19 @@ function Register({ history }) {
 		email: '',
 		password: '',
 	});
+	const error = useSelector(state => state.error.error);
 	const [register, setRegister] = useState(false);
 	const dispatch = useDispatch();
 	const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
+	console.log(error);
+
 	useEffect(() => {
 		if (localStorage.getItem('authToken')) {
 			setRegister(true);
-			alert("registered");
+			alert('registered');
 			history.push('/profile');
-		}
+		} 
 	}, [isAuthenticated, history]);
 
 	const handleChange = e => {
@@ -113,7 +125,7 @@ function Register({ history }) {
 					</div>
 					<div className="col-lg-1 col-md-1 col-sm-1 register_img"></div>
 					<div className="col-lg-5 col-md-12 col-sm-12 register_img">
-						<img className="register_img" src={register} />
+						<img className="register_img" src={imgR} />
 					</div>
 				</div>
 			</div>

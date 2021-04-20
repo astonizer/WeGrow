@@ -40,7 +40,7 @@ function Donate() {
 	};
 
 	return (
-		<Container align="center" className="my-5">
+		<div align="center" className="my-5 donate">
 			<Form onSubmit={handleClick}>
 				<h1>Donate Money</h1>
 				<Form.Group controlId="email">
@@ -55,7 +55,7 @@ function Donate() {
 				</Form.Group>				
 				<Button role="link">Donate</Button>
 			</Form>
-		</Container>
+		</div>
 	);
 }
 
