@@ -1,15 +1,13 @@
 import React from 'react';
-
-// import './Feedback.css';
+import './Feedback.css';
 
 function Feedback() {
   return (
-    <div className="card" style="width: 18rem;">
-      <div className="row">
-        <div className="col">
+    <div className="card feedback container">
+      <div className="row m-auto">
           <h5 className="card-title">Give Us Your Valuable Feedback</h5>
-        </div>
-        <div className="col">
+      </div>
+      <div className="row">
           <div className="card-body">
             <form>
               <div className="form-check form-check-inline">
@@ -33,13 +31,13 @@ function Feedback() {
                 <label className="form-check-label" for="inlineRadio5">5</label>
               </div>
               <div className="form-group">
-                <label for="exampleFormControlTextarea1">Example textarea</label>
+                <label for="exampleFormControlTextarea1">Description</label>
                 <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
               </div>
+              <button type="button" class="btn btn-outline-success">Success</button>
             </form>           
           </div>
-        </div>
-      </div>
+        </div>      
   </div>
   );
 }

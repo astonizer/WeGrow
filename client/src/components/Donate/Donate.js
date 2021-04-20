@@ -52,7 +52,7 @@ function Donate() {
 						min="0"
 						max="1000000000"
 					/>
-				</Form.Group>
+				</Form.Group>				
 				<Button role="link">Donate</Button>
 			</Form>
 		</Container>
