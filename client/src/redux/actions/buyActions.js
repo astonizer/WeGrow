@@ -20,9 +20,9 @@ export const fetchItems = () => async dispatch => {
 		});
 };
 
-export const bidPrice = (id, price) => async dispatch => {
+export const bidPrice = (cropId,  newBuyPrice) => async dispatch => {
 	// Request headers
-	
+
 	const config = {
 		headers: {
 			'Content-Type': 'application/json',
@@ -30,13 +30,13 @@ export const bidPrice = (id, price) => async dispatch => {
 	};
 
 	const data = {
-		id,
-		price,
+		cropId,
+		newBuyPrice,
 		token: localStorage.getItem('authToken'),
 	};
 
 	axios
-		.post(`/api/buy/crop/${id}`, JSON.stringify(data), config)
+		.post('/api/buy/bid', JSON.stringify(data), config)
 		.then(res => {
 			dispatch({ type: BID_SUCCESS, payload: res.data });
 		})

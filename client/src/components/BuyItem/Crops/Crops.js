@@ -14,7 +14,7 @@ function Crops({ crop, id }) {
 	return (
 		<div className="container buyer">
 			<Card className="crop" onClick={handleClick}>
-				<Card.Img variant="top" className="image" src={crop.selectedFile} />
+				<Card.Img variant="top" className="image" src={crop.selectedFile[0]} />
 				<Card.Body>
 					<Card.Text>
 						<Card.Title>{crop.title}</Card.Title>
