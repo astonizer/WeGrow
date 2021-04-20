@@ -27,23 +27,14 @@ function Crop() {
 	}, [buy]);
 
 // Bidding
-    const counterHandler = () => {
+    const counterHandler = () => {   
         a = countRef.current.value;
-        setCounter(prevCount => {
-            if(Number(a) <= 0)
-                return prevCount;
-            return prevCount + Number(a);
-        });        
-    }
-// console.log('crops.js 1 ', counter);
-    const updateBid = () => {
-        console.log('crops.js ', counter);
-        dispatch(bidPrice(crop._id, counter));
+        updateBid(a);
+		if (Number(a) > 0) setCounter(counter + Number(a));
     }
 
-    const fun = async () => { 
-        await counterHandler();
-        await updateBid();
+    const updateBid = (a) => {
+        dispatch(bidPrice(crop._id, counter + Number(a)));
     }
 
     const addHandler = () => {
@@ -106,7 +97,7 @@ function Crop() {
                         <h4>Highest Bid Till now: 320</h4>
                         <h5>Want to place higher Bid? </h5>
                         <input ref={countRef} type="number" min={0} max={1000000} />
-                        <button onClick={fun}>Add</button>
+                        <button onClick={counterHandler}>Add</button>
                         {/* <button onClick={addHandler}>+</button>
                         <button onClick={subtractHandler}>-</button> */}
                     </div>
