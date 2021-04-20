@@ -7,8 +7,11 @@ import {
 	UPLOAD_PROFILE_PICTURE_FAIL,
 	UPLOAD_PROFILE_PICTURE_SUCCESS,
 } from '../constants/profileConstants';
+import { clearErrors, returnErrors } from './errorActions';
 
 export const fetchProfile = token => async dispatch => {
+	dispatch(clearErrors());
+
 	// Request headers
 	const config = {
 		headers: {
@@ -28,16 +31,18 @@ export const fetchProfile = token => async dispatch => {
 				});
 			})
 			.catch(err => {
-				console.log(err);
 				dispatch({ type: FETCH_PROFILE_FAIL });
+				dispatch(returnErrors(err.response.data.error));
 			});
 	} catch (error) {
-		console.log(error);
 		dispatch({ type: FETCH_PROFILE_FAIL });
+		dispatch(returnErrors(error.response.data.error));
 	}
 };
 
 export const uploadProfilePicture = img => async dispatch => {
+	dispatch(clearErrors());
+
 	// Request headers
 	const config = {
 		headers: {
@@ -64,11 +69,11 @@ export const uploadProfilePicture = img => async dispatch => {
 				});
 			})
 			.catch(err => {
-				console.log(err);
 				dispatch({ type: UPLOAD_PROFILE_PICTURE_FAIL });
+				dispatch(returnErrors(err.response.data.error));
 			});
 	} catch (error) {
-		console.log(error);
 		dispatch({ type: FETCH_PROFILE_FAIL });
+		dispatch(returnErrors(error.response.data.error));
 	}
 };
