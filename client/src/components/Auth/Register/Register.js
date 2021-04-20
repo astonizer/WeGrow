@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Col, Card, Form, Button, Container, Alert, Toast } from 'react-bootstrap';
+import {
+	Row,
+	Col,
+	Card,
+	Form,
+	Button,
+	Container,
+	Alert,
+	Toast,
+} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../../../redux/actions/authActions';
 import imgR from '../../../assets/register.svg';
@@ -22,7 +31,7 @@ function Register({ history }) {
 	useEffect(() => {
 		if (localStorage.getItem('authToken')) {
 			setRegister(true);
-			alert("registered");
+			alert('registered');
 			history.push('/profile');
 		} 
 	}, [isAuthenticated, history]);
