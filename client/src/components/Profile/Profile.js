@@ -4,9 +4,9 @@ import {
 	fetchProfile,
 	uploadProfilePicture,
 } from '../../redux/actions/profileActions';
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import FileBase from 'react-file-base64';
-import Chart from './Chart';
+import './Profile.css';
 
 function Profile() {
 	const [img, setImg] = useState(null);
@@ -27,8 +27,8 @@ function Profile() {
 	}, []);
 
 	return (
-		<Container align="center">
-			<Row>
+		<div className="profile-main">
+			{/* <Row>
 				<Col>
 					<Row>
 						<Col>
@@ -67,8 +67,37 @@ function Profile() {
 						</Col>
 					</Row>
 				</Col>
+			</Row> */}
+			<Row style={{ margin: 'auto' }}>
+				<Col style={{ margin: 'auto', marginTop: '150px' }} lg={8} md={6} sm={6}>
+					<Card style={{ width: '30rem', borderRadius: '30px', margin: 'auto' }}>
+						<Card.Img style={{ borderRadius: '30px 30px 0px 0px' }} variant="top" src={user.profilePicture} />
+						<div className="profile-card-details">
+							<Card.Body>
+								<Card.Title>My Profile</Card.Title>
+								<br />
+								<br />
+								<Card.Text>
+									<p>{user.username}</p>
+									<hr />
+									<p>{user.email}</p>
+									<hr />
+								</Card.Text>
+								<p>Upload Profile Picture?</p>
+								<FileBase
+									type="file"
+									multiple={false}
+									onDone={handleDone}
+								/>
+								<Button variant="primary" onClick={handleSubmit}>
+									Upload Picture
+							   </Button>
+							</Card.Body>
+						</div>
+					</Card>
+				</Col>
 			</Row>
-		</Container>
+		</div>
 	);
 }
 
