@@ -19,22 +19,25 @@ function Crop() {
 
 // Fetch Crops
 	useEffect(() => {		
-        dispatch(fetchItems());        
+        dispatch(fetchItems()); 
 	}, []);
 
 	useEffect(() => {
-		setCrop(buy.items[id]);
+		setCrop(buy.items[id]);        
+        setCounter(buy.items[id]?.buyPrice);
 	}, [buy]);
 
+        
 // Bidding
     const counterHandler = () => {   
         a = countRef.current.value;
         updateBid(a);
-		if (Number(a) > 0) setCounter(counter + Number(a));
+		if (Number(a) > 0) setCounter(Number(a));
     }
 
     const updateBid = (a) => {
-        dispatch(bidPrice(crop._id, counter + Number(a)));
+        if(Number(a) > counter)
+        dispatch(bidPrice(crop._id, Number(a)));
     }
 
     const addHandler = () => {
@@ -64,21 +67,21 @@ function Crop() {
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src={crop.selectedFile}
+                                    // src={crop.selectedFile[0]}
                                     alt="First slide"
                                 />
                             </Carousel.Item>
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src={crop.selectedFile}
+                                    // src={crop.selectedFile[1]}
                                     alt="Second slide"
                                 />
                             </Carousel.Item>
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src={crop.selectedFile}
+                                    // src={crop.selectedFile[2]}
                                     alt="Third slide"
                                 />
                             </Carousel.Item>
@@ -94,7 +97,7 @@ function Crop() {
                 </Col>
                 <Col className="my-5" style={{ textAlign: "center" }} md={12} lg={12} sm={12}>
                     <div className="bid_info">
-                        <h4>Highest Bid Till now: 320</h4>
+                        <h4>Highest Bid Till now: {counter}</h4>
                         <h5>Want to place higher Bid? </h5>
                         <input ref={countRef} type="number" min={0} max={1000000} />
                         <button onClick={counterHandler}>Add</button>
