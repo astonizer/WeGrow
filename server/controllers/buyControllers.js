@@ -23,14 +23,16 @@ const items_get = async (req, res, next) => {
 };
 
 const bidCrop_post = async (req, res, next) => {
-	const { data } = req.body;
 	// data = {token, newBuyPrice, cropId}
+	const {token, newBuyPrice, cropId} = req.body;	
+
 	try {
-		const crop = await CropSell.findById(data.cropId);
-		if (data.newBuyPrice > crop.buyPrice) {
-			const decodedToken = jwt.verify(data.token, JWT_SECRET);
+		const crop = await CropSell.findById(cropId);
+		if (newBuyPrice > crop.buyPrice) {
+			const decodedToken = jwt.verify(token, JWT_SECRET);
 			const buyer = await User.findById(decodedToken.id);
-			CropSell.updateOne({ _id: cropId }, { buyer: buyer });
+			await CropSell.updateOne({ _id: cropId }, { buyer: buyer });
+			await CropSell.updateOne({ _id: cropId }, { buyPrice: newBuyPrice });
 		}
 		res.status(200).json({ success: true });
 	} catch (error) {
