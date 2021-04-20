@@ -44,6 +44,10 @@ const userSchema = new mongoose.Schema({
 	},
 	sell: [{ type: mongoose.Schema.Types.ObjectId, ref: 'cropSell' }],
 	buy: [cropBuySchema],
+	profilePicture: {
+		type: String,
+		default: null,
+	},
 });
 
 /**
