@@ -4,9 +4,9 @@ import {
 	fetchProfile,
 	uploadProfilePicture,
 } from '../../redux/actions/profileActions';
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import FileBase from 'react-file-base64';
-import Chart from './Chart';
+import './Profile.css';
 
 function Profile() {
 	const [img, setImg] = useState(null);
@@ -27,48 +27,29 @@ function Profile() {
 	}, []);
 
 	return (
-		<Container align="center">
-			<Row>
-				<Col>
-					<Row>
-						<Col>
-							<img
-								src={user.profilePicture}
-								alt="profile picture"
-							/>
-						</Col>
-					</Row>
-					<Row>
-						<Col>
-							<FileBase
-								type="file"
-								multiple={false}
-								onDone={handleDone}
-							/>
-						</Col>
-					</Row>
-					<Row>
-						<Col>
-							<Button onClick={handleSubmit}>
-								Upload Picture
-							</Button>
-						</Col>
-					</Row>
-				</Col>
-				<Col>
-					<Row>
-						<Col>
-							<h3>Username : {user.username}</h3>
-						</Col>
-					</Row>
-					<Row>
-						<Col>
-							<h3>Email : {user.email}</h3>
-						</Col>
-					</Row>
+		<div className="profile-main">
+			<Row style={{margin: 'auto'}}>
+				<Col style={{margin: 'auto', marginTop: '150px'}} lg={8} md={6} sm={6}>
+					<Card style={{ width: '30rem', borderRadius: '30px', margin: 'auto'}}>
+						<Card.Img style={{borderRadius: '30px 30px 0px 0px'}} variant="top" src={user.profilePicture} />
+						<div className="profile-card-details">
+							<Card.Body>
+								<Card.Title>My Profile</Card.Title>
+								<br />
+								<br />
+								<Card.Text>
+									<p>{user.username}</p>
+									<hr />
+									<p>{user.email}</p>
+									<hr />
+                               </Card.Text>
+								<Button variant="primary">Go somewhere</Button>
+							</Card.Body>
+						</div>
+					</Card>
 				</Col>
 			</Row>
-		</Container>
+		</div>
 	);
 }
 
