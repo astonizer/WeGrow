@@ -26,13 +26,14 @@ function SellItem() {
 	};
 
 	const handleDone = e => {
+
 		let data = [];
 		e.map(({ base64 }) => {
 			data.push(base64);
 		});
 		setItem({
 			...item,
-			selectedFile: [...data],
+			selectedFile: [...data]
 		});
 	};
 
@@ -70,6 +71,17 @@ function SellItem() {
 						value={item.initialPrice}
 						onChange={handleChange}
 						required
+					/>
+				</Form.Group>
+				<Form.Group>
+					<Form.Label>Price</Form.Label>
+					<Form.Control
+						id="price"
+						type="text"
+						placeholder="Enter price"
+						rows={3}
+						value={item.initialPrice}
+						onChange={handleChange}
 					/>
 				</Form.Group>
 				<Form.Group>
