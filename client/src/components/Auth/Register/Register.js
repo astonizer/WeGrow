@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Row, Col, Card, Form, Button, Container, Alert, Toast } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../../../redux/actions/authActions';
-import register from '../../../assets/register.svg';
+import imgR from '../../../assets/register.svg';
 import '../Auth.css';
 import './Register.css';
 
@@ -113,7 +113,7 @@ function Register({ history }) {
 					</div>
 					<div className="col-lg-1 col-md-1 col-sm-1 register_img"></div>
 					<div className="col-lg-5 col-md-12 col-sm-12 register_img">
-						<img className="register_img" src={register} />
+						<img className="register_img" src={imgR} />
 					</div>
 				</div>
 			</div>
