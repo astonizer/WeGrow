@@ -20,7 +20,7 @@ export default function buyReducers(state = initialState, action) {
 		case FETCH_ITEMS_SUCCESS:
 			return {
 				...state,
-				items: [...state.items, ...action.payload],
+				items: [...action.payload],
 				isLoading: false,
 			};
 

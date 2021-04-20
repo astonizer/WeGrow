@@ -13,3 +13,8 @@
     border: 1px solid;
     border-radius: 10px
 }
+
+.crop-inside{
+    display: flex;
+    justify-content: space-between;
+}
