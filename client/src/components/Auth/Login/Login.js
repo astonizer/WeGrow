@@ -14,8 +14,9 @@ function Login({ history }) {
 
 	const dispatch = useDispatch();
 	const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+	const error = useSelector(state => state.error.error);
 
-	console.log(isAuthenticated);
+	console.log(error);
 
 	useEffect(() => {
 		if (localStorage.getItem('authToken')) {

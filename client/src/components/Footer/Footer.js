@@ -1,45 +1,56 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 import './Footer.css';
 
 function Footer() {
+
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+
     return (
         <footer className="footer" id="footer">
             <div className="container">
                 <div className="row">             
                     <div className="col-12 col-lg-3 col-md-4 links">
-                        <ul className="list-unstyled links">
-                            <li>
-                                <Link className="footer-link" to="/">
-                                    Home
-                                </Link>
-                            </li>
-                            <li>
-                                <Link className="footer-link" to="/auth/register">
-                                    Register
-                                </Link>
-                            </li>
-                            <li>
-                                <Link className="footer-link" to="/auth/login">
-                                    Login
-                                </Link>
-                            </li>
-                            <li>
-                                <Link className="footer-link" to="/buy">
-                                    Buy
-                                </Link>
-                            </li>
-                            <li>
-                                <Link className="footer-link" to="/sell">
-                                    Sell
-                                </Link>
-                            </li>
-                            <li>
-                                <Link className="footer-link" to="/profile">
-                                    Profile
-                                </Link>
-                            </li>
+                    <ul className="list-unstyled links">
+                        {isAuthenticated ? (
+                            <>
+                                <li>
+                                    <Link className="footer-link" to="/">
+                                        Home
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link className="footer-link" to="/buy">
+                                        Buy
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link className="footer-link" to="/sell">
+                                        Sell
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link className="footer-link" to="/profile">
+                                        Profile
+                                    </Link>
+                                </li>
+                            </>
+                        ):(
+                            <>
+                                <li>
+                                    <Link className="footer-link" to="/auth/register">
+                                        Register
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link className="footer-link" to="/auth/login">
+                                        Login
+                                    </Link>
+                                </li>
+                            </>
+                        )}
                         </ul>
                     </div>
                     <div className="col-lg-5 col-md-8 align-self-center">

@@ -1,9 +1,13 @@
-.crop{
+.crop {
   text-align: center;
   margin: 10px;
   padding: 10px;
 }
 
-.image{
+.crop :hover {
+  cursor: pointer;
+}
+
+.image {
   height: 150px;
 }

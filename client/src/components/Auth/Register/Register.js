@@ -21,16 +21,19 @@ function Register({ history }) {
 		email: '',
 		password: '',
 	});
+	const error = useSelector(state => state.error.error);
 	const [register, setRegister] = useState(false);
 	const dispatch = useDispatch();
 	const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+
+	console.log(error);
 
 	useEffect(() => {
 		if (localStorage.getItem('authToken')) {
 			setRegister(true);
 			alert('registered');
 			history.push('/profile');
-		}
+		} 
 	}, [isAuthenticated, history]);
 
 	const handleChange = e => {
