@@ -1,7 +1,6 @@
 import React from 'react';
 import DonateContainer from '../DonateContainer/DonateContainer';
 import Feedback from '../Feedback/Feedback';
-import AuthenticatedToast from '../Auth/AuthenticatedToast/AuthenticatedToast';
 import Banner from './Banner/Banner';
 import './Home.css';
 
@@ -34,7 +33,6 @@ function Home() {
 					<Feedback />
 				</div>
 			</div>
-			<AuthenticatedToast />
 		</div>
 	);
 }

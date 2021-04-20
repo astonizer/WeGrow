@@ -12,7 +12,7 @@ function DonateContainer() {
 	}
 
 	return (
-		<div className="card mb-3 donate" onClick={handleClick}>
+		<div className="card mb-3 donate m-5 p-3" onClick={handleClick}>
 			<div className="row">
 				<div className="col-12 col-md-4 col-sm-3 col-xs-2">
 					<img className="card-img" src={donate} alt="Card image cap" />

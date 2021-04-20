@@ -4,7 +4,7 @@ import {
 	fetchProfile,
 	uploadProfilePicture,
 } from '../../redux/actions/profileActions';
-import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
+import { Button, Card, Col, Row } from 'react-bootstrap';
 import FileBase from 'react-file-base64';
 import './Profile.css';
 

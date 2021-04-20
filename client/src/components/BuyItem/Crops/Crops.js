@@ -1,7 +1,6 @@
 import React from 'react';
-import { useHistory, Link } from 'react-router-dom';
-import { Card, Badge, Button } from 'react-bootstrap';
-import Crop from './Crop/Crop';
+import { useHistory } from 'react-router-dom';
+import { Card, Badge } from 'react-bootstrap';
 
 import './Crops.css';
 

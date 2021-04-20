@@ -19,3 +19,12 @@ margin-top: 85px;
     display: flex;
     justify-content: space-between;
 }
+
+.bg-color {
+	background: rgb(16, 185, 129, 0.1);
+	border-color: rgb(107,114,128);
+}
+
+.bg-color:hover {
+	background: rgb(16, 185, 129);
+}
