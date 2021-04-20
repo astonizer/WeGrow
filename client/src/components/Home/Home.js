@@ -1,4 +1,6 @@
 import React from 'react';
+import DonateContainer from '../DonateContainer/DonateContainer';
+import Feedback from '../Feedback/Feedback';
 import AuthenticatedToast from '../Auth/AuthenticatedToast/AuthenticatedToast';
 import Banner from './Banner/Banner';
 import './Home.css';
@@ -24,6 +26,12 @@ function Home() {
 					<div className="banner_p2 col-lg-6 col-md-12 col-sm-12">
 						<Banner />
 					</div>
+				</div>
+				<div className="row">
+					<DonateContainer />					
+				</div>
+				<div className="row">					
+					<Feedback />
 				</div>
 			</div>
 			<AuthenticatedToast />

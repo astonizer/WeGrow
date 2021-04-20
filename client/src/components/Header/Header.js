@@ -2,8 +2,9 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logoutUser } from '../../redux/actions/authActions';
-import './Header.css';
 import { Navbar, Nav } from 'react-bootstrap';
+
+import './Header.css';
 
 function Header({ history }) {
 	const dispatch = useDispatch();

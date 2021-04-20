@@ -74,17 +74,6 @@ function SellItem() {
 					/>
 				</Form.Group>
 				<Form.Group>
-					<Form.Label>Price</Form.Label>
-					<Form.Control
-						id="price"
-						type="text"
-						placeholder="Enter price"
-						rows={3}
-						value={item.initialPrice}
-						onChange={handleChange}
-					/>
-				</Form.Group>
-				<Form.Group>
 					<Form.Label>Input File</Form.Label>
 					<br />
 					<FileBase type="file" multiple={true} onDone={handleDone} />

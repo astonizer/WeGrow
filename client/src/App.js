@@ -16,6 +16,7 @@ import SellItem from './components/SellItem/SellItem';
 import Crop from './components/BuyItem/Crops/Crop/Crop';
 import BuyItem from './components/BuyItem/BuyItem';
 import Donate from './components/Donate/Donate';
+import Loading from './components/Loading/Loading';
 
 function App() {
 	const history = useHistory();
@@ -32,7 +33,7 @@ function App() {
 				<PrivateRoute exact path="/sell" component={SellItem} />
 				<PrivateRoute exact path="/donate" component={Donate} />
 				<PrivateRoute exact path="/buy" component={BuyItem} />
-				<Route exact path="/" component={Home} />
+				{/* <Route exact path="/" component={Home} /> */}
 				<Route
 					path="/auth/register"
 					component={Register}
@@ -41,6 +42,7 @@ function App() {
 				<Route path="/auth/login" component={Login} history={history} />
 				<Route path="/crop/:id" component={Crop} history={history} />
 			</Switch>
+			<Loading />
 			<Footer />
 		</div>
 	);

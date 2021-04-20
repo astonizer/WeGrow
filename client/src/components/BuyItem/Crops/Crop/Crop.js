@@ -10,6 +10,7 @@ import {
 	Jumbotron,
 	Badge,
 } from 'react-bootstrap';
+import Loading from '../../../Loading/Loading';
 
 import { fetchItems } from '../../../../redux/actions/buyActions';
 import { bidPrice } from '../../../../redux/actions/buyActions';
@@ -22,7 +23,7 @@ function Crop() {
 	const dispatch = useDispatch();
 	const buy = useSelector(state => state.buy);
 	const { id } = useParams();
-
+	const loading = true;
 	let a;
 
 	// Fetch Crops
@@ -33,6 +34,7 @@ function Crop() {
 	useEffect(() => {
 		setCrop(buy.items[id]);
 		setCounter(buy.items[id]?.buyPrice);
+		loading = false;
 	}, [buy]);
 
 	// Bidding
@@ -59,8 +61,11 @@ function Crop() {
 
 	// console.log(crop);
 	return (
-		<div className="crop">
-			{crop && id > -1 ? (
+		<div className="crop">		
+			{
+				loading ? (	
+			
+			crop && id > -1 ? (
 				<>
 					<Row>
 						<Col lg={7} md={12} sm={12} className="mx-auto">
@@ -131,7 +136,11 @@ function Crop() {
 				</>
 			) : (
 				'No Crop present'
-			)}
+			)
+				) : (
+					<Loading />
+				)
+			}
 		</div>
 	);
 }
