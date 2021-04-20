@@ -8,17 +8,9 @@ const JWT_SECRET = process.env.JWT_SECRET;
 const JWT_EXPIRY = process.env.JWT_EXPIRY;
 
 const cropBuySchema = new mongoose.Schema({
-	title: {
-		type: String,
-		required: [true, 'Empty crop title'],
-	},
-	description: {
-		type: String,
-		required: [true, 'Empty crop description'],
-	},
-	selectedFile: {
-		type: String,
-		required: [true, 'No image provided'],
+	seller: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'user',
 	},
 	buyDate: {
 		type: Date,
@@ -27,54 +19,6 @@ const cropBuySchema = new mongoose.Schema({
 	buyPrice: {
 		type: Number,
 		required: [true, 'Empty buy price'],
-	},
-});
-
-const cropSoldSchema = new mongoose.Schema({
-	title: {
-		type: String,
-		required: [true, 'Empty crop title'],
-	},
-	description: {
-		type: String,
-		required: [true, 'Empty crop description'],
-	},
-	selectedFile: {
-		type: String,
-		required: [true, 'No image provided'],
-	},
-	soldDate: {
-		type: Date,
-		default: Date.now,
-	},
-	finalPrice: {
-		type: Number,
-		required: [true, 'Empty final price'],
-	},
-});
-
-const cropOnSaleSchema = new mongoose.Schema({
-	title: {
-		type: String,
-		required: [true, 'Empty crop title'],
-	},
-	description: {
-		type: String,
-		required: [true, 'Empty crop description'],
-	},
-	selectedFile: [
-		{
-			type: String,
-			required: [true, 'No image provided'],
-		},
-	],
-	onSaleDate: {
-		type: Date,
-		default: Date.now,
-	},
-	initialPrice: {
-		type: Number,
-		required: [true, 'Empty initial price'],
 	},
 });
 
@@ -98,8 +42,7 @@ const userSchema = new mongoose.Schema({
 		minlength: [6, 'Short password'],
 		select: false,
 	},
-	onSale: [cropOnSaleSchema],
-	sold: [cropSoldSchema],
+	sell: [{ type: mongoose.Schema.Types.ObjectId, ref: 'cropSell' }],
 	buy: [cropBuySchema],
 });
 

@@ -8,13 +8,14 @@ function SellItem() {
 	const [item, setItem] = useState({
 		title: '',
 		description: '',
+		initialPrice: '',
 		selectedFile: [],
 	});
 	const dispatch = useDispatch();
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		dispatch(sellItem(item));
+		if (item.selectedFile.length > 0) dispatch(sellItem(item));
 	};
 
 	const handleChange = e => {
@@ -46,6 +47,7 @@ function SellItem() {
 						placeholder="Enter title"
 						value={item.title}
 						onChange={handleChange}
+						required
 					/>
 				</Form.Group>
 				<Form.Group>
@@ -57,6 +59,17 @@ function SellItem() {
 						rows={3}
 						value={item.description}
 						onChange={handleChange}
+						required
+					/>
+				</Form.Group>
+				<Form.Group>
+					<Form.Label>Initial Price</Form.Label>
+					<Form.Control
+						id="initialPrice"
+						placeholder="Set an initial price"
+						value={item.initialPrice}
+						onChange={handleChange}
+						required
 					/>
 				</Form.Group>
 				<Form.Group>
