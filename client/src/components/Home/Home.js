@@ -3,6 +3,7 @@ import DonateContainer from '../DonateContainer/DonateContainer';
 import Feedback from '../Feedback/Feedback';
 import Banner from './Banner/Banner';
 import './Home.css';
+import Testimonials from './Testimonials/Testimonials';
 
 function Home() {
 	return (
@@ -27,12 +28,13 @@ function Home() {
 					</div>
 				</div>
 				<div className="row">
-					<DonateContainer />					
+					<DonateContainer />
 				</div>
-				<div className="row">					
+				<div className="row">
 					<Feedback />
 				</div>
 			</div>
+			<Testimonials />
 		</div>
 	);
 }

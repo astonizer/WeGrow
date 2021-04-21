@@ -1,12 +1,13 @@
-.register{
-    margin: auto;
+.register {
+	margin: auto;
+	min-height: 63.5vh;
 }
 
-.row{
-align-items: center;
+.row {
+	align-items: center;
 }
 
-.register_img{
-    width: 500px;
-    height: 500px;
+.register_img {
+	width: 500px;
+	height: 500px;
 }

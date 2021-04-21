@@ -1,10 +1,10 @@
-.logo{
+.logo {
 	left: 0;
-    width: 120px;
-    object-fit: contain;
-    top: 10px;
-    cursor: pointer;
-    padding-left: 20px;
+	width: 120px;
+	object-fit: contain;
+	top: 10px;
+	cursor: pointer;
+	padding-left: 20px;
 }
 
 .header_links {
@@ -15,12 +15,17 @@
 }
 
 .header_link {
-	color: #10B981;
+	color: #10b981;
 	text-decoration: none;
 	font-size: x-large;
 	padding: 10px;
 }
 
-#root > div > nav > div{
+.header_link:hover {
+	text-decoration: none;
+	color: #26da9e;
+}
+
+#root > div > nav > div {
 	margin: auto;
 }

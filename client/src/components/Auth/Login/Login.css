@@ -1,4 +1,9 @@
-.login_img{
-  width: 500px;
-  height: 500px;
+.login {
+	margin: auto;
+	min-height: 63.5vh;
+}
+
+.login_img {
+	width: 500px;
+	height: 500px;
 }

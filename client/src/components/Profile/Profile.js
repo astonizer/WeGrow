@@ -28,50 +28,20 @@ function Profile() {
 
 	return (
 		<div className="profile-main">
-			{/* <Row>
-				<Col>
-					<Row>
-						<Col>
-							<img
-								src={user.profilePicture}
-								alt="profile picture"
-							/>
-						</Col>
-					</Row>
-					<Row>
-						<Col>
-							<FileBase
-								type="file"
-								multiple={false}
-								onDone={handleDone}
-							/>
-						</Col>
-					</Row>
-					<Row>
-						<Col>
-							<Button onClick={handleSubmit}>
-								Upload Picture
-							</Button>
-						</Col>
-					</Row>
-				</Col>
-				<Col>
-					<Row>
-						<Col>
-							<h3>Username : {user.username}</h3>
-						</Col>
-					</Row>
-					<Row>
-						<Col>
-							<h3>Email : {user.email}</h3>
-						</Col>
-					</Row>
-				</Col>
-			</Row> */}
 			<Row style={{ margin: 'auto' }}>
-				<Col style={{ margin: 'auto', marginTop: '150px' }} lg={8} md={6} sm={6}>
-					<Card style={{ width: '30rem', borderRadius: '30px', margin: 'auto' }}>
-						<Card.Img style={{ borderRadius: '30px 30px 0px 0px' }} variant="top" src={user.profilePicture} />
+				<Col style={{ margin: 'auto', marginTop: '150px' }}>
+					<Card
+						style={{
+							width: '30rem',
+							borderRadius: '30px',
+							margin: 'auto',
+						}}
+					>
+						<Card.Img
+							style={{ borderRadius: '30px 30px 0px 0px' }}
+							variant="top"
+							src={user.profilePicture}
+						/>
 						<div className="profile-card-details">
 							<Card.Body>
 								<Card.Title>My Profile</Card.Title>
@@ -89,9 +59,12 @@ function Profile() {
 									multiple={false}
 									onDone={handleDone}
 								/>
-								<Button variant="primary" onClick={handleSubmit}>
+								<Button
+									variant="primary"
+									onClick={handleSubmit}
+								>
 									Upload Picture
-							   </Button>
+								</Button>
 							</Card.Body>
 						</div>
 					</Card>

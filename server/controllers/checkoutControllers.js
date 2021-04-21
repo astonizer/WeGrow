@@ -12,7 +12,7 @@ const donate_post = async (req, res, next) => {
 				price_data: {
 					currency: 'usd',
 					product_data: {
-						name: 'T-shirt',
+						name: 'Donation for farmers',
 					},
 					unit_amount: amount,
 				},
