@@ -28,3 +28,9 @@ margin-top: 85px;
 .bg-color:hover {
 	background: rgb(16, 185, 129);
 }
+
+@media screen and (max-width: 480px){
+    .crop-inside{
+    display: block;
+    }
+}

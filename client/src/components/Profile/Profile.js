@@ -30,7 +30,7 @@ function Profile() {
 		<div className="profile-main">
 			<Row style={{ margin: 'auto' }}>
 				<Col style={{ margin: 'auto', marginTop: '150px' }}>
-					<Card
+					<Card className="card-profile"
 						style={{
 							width: '30rem',
 							borderRadius: '30px',
