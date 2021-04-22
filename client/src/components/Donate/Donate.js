@@ -4,7 +4,6 @@ import axios from 'axios';
 import { Button, Container, Form } from 'react-bootstrap';
 import './Donate.css';
 
-
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
 const stripePromise = loadStripe(
@@ -39,6 +38,7 @@ function Donate() {
 			// If `redirectToCheckout` fails due to a browser or network
 			// error, display the localized error message to your customer
 			// using `result.error.message`.
+			console.log(result.error);
 		}
 	};
 
@@ -55,8 +55,10 @@ function Donate() {
 						min="0"
 						max="1000000000"
 					/>
-				</Form.Group>				
-				<Button role="link" variant="btn-light" className="bg-color">Donate</Button>
+				</Form.Group>
+				<Button role="link" variant="btn-light" className="bg-color">
+					Donate
+				</Button>
 			</Form>
 		</div>
 	);

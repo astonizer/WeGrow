@@ -53,3 +53,10 @@
 		transform: rotateZ(0deg);
 	}
 }
+
+/* @media screen and (max-width: 480px){
+	.banner{
+		width: 40vw;
+		height: 60vh
+	}
+} */

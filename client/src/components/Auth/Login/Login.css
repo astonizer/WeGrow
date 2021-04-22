@@ -1,4 +1,22 @@
-.login_img{
-  width: 500px;
-  height: 500px;
+.login {
+	margin: auto;
+	min-height: 63.5vh;
+}
+
+.login_img {
+	width: 500px;
+	height: 500px;
+}
+
+@media screen and (max-width: 480px){
+	.login_img {
+		width: 250px;
+		height:250px;
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+
+	#root > div > div > div > div > div.col-lg-5.col-md-12.col-sm-12{
+		text-align: center;
+	}
 }

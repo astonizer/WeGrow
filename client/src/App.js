@@ -16,6 +16,8 @@ import SellItem from './components/SellItem/SellItem';
 import Crop from './components/BuyItem/Crops/Crop/Crop';
 import BuyItem from './components/BuyItem/BuyItem';
 import Donate from './components/Donate/Donate';
+import OptimumCrop from './components/Predict/OptimumCrop';
+import PredictForm from './components/Predict/PredictForm';
 
 function App() {
 	const history = useHistory();
@@ -32,6 +34,7 @@ function App() {
 				<PrivateRoute exact path="/sell" component={SellItem} />
 				<PrivateRoute exact path="/donate" component={Donate} />
 				<PrivateRoute exact path="/buy" component={BuyItem} />
+				{/* <Route exact path="/predict" component={OptimumCrop} /> */}
 				<Route exact path="/" component={Home} />
 				<Route
 					path="/auth/register"
@@ -40,6 +43,7 @@ function App() {
 				/>
 				<Route path="/auth/login" component={Login} history={history} />
 				<Route path="/crop/:id" component={Crop} history={history} />
+				<Route exact path="/predict" component={PredictForm} history={history} />
 			</Switch>
 			<Footer />
 		</div>
