@@ -51,7 +51,6 @@ function Register({ history }) {
 					<div className="col-lg-5 col-md-12 col-sm-12 register_img">
 						<img className="register_img" src={imgR} />
 					</div>
-					<div className="col-lg-1 col-md-1 col-sm-1 register_img"></div>
 					<div className="col-lg-6 col-md-12 col-sm-12">
 						<Card className="text-center">
 							<Card.Header className="bg-color">

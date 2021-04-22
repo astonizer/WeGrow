@@ -10,4 +10,16 @@
 .register_img {
 	width: 500px;
 	height: 500px;
+	margin-right: 80px;
+}
+
+@media screen and (max-width: 480px){
+	.register_img {
+		width: 250px;
+		height: 250px;
+		margin: 0;
+	}
+	#root > div > div > div > div > div.col-lg-5.col-md-12.col-sm-12.register_img{
+		margin: auto;
+	}
 }

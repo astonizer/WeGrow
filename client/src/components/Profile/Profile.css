@@ -2,3 +2,9 @@
   margin-bottom: 100px;
   align-items: center;
 }
+
+@media screen and (max-width: 480px){
+  .card-profile{
+    width: 18rem!important;
+  }
+}
