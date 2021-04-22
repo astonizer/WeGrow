@@ -34,7 +34,7 @@ function Home() {
 					<Feedback />
 				</div>
 			</div>
-			<Testimonials />
+			{/* <Testimonials /> */}
 		</div>
 	);
 }

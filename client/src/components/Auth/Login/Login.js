@@ -111,7 +111,6 @@ function Login({ history }) {
 							</Card.Body>
 						</Card>
 					</div>
-					<div className="col-lg-1 col-md-1 col-sm-1 register_img"></div>
 					<div className="col-lg-5 col-md-12 col-sm-12">
 						<img className="login_img" src={login} />
 					</div>
