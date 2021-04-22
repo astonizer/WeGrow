@@ -31,11 +31,12 @@ const PredictForm = () => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log(items);
+        // console.log(items);
         axios
-        .post('', JSON.stringify(items), config)
+        .post('http://127.0.0.1:5001/predict', JSON.stringify(items), config)
 		.then(res => {
-            console.log(res);
+            // console.log(res);
+            console.log('prediction ', res.data.prediction);
 		})
 		.catch(err => {
             console.log(err);
@@ -68,22 +69,22 @@ const PredictForm = () => {
 
                                     <Form.Group>
                                         <Form.Label>Temperature (T)</Form.Label>
-                                        <Form.Control id="temperature" onChange={changeHandler} type="number" placeholder="Enter T amount" />
+                                        <Form.Control id="temperature" onChange={changeHandler} type="number" step=".0001" placeholder="Enter T amount" />
                                     </Form.Group>
 
                                     <Form.Group>
                                         <Form.Label>Humidity (H)</Form.Label>
-                                        <Form.Control id="humidity" onChange={changeHandler} type="number" placeholder="Enter H amount" />
+                                        <Form.Control id="humidity" onChange={changeHandler} type="number" step=".0001" placeholder="Enter H amount" />
                                     </Form.Group>
 
                                     <Form.Group>
                                         <Form.Label>PH (ph)</Form.Label>
-                                        <Form.Control id="ph" onChange={changeHandler} type="number" placeholder="Enter ph amount" />
+                                        <Form.Control id="ph" onChange={changeHandler} type="number" step=".0001" placeholder="Enter ph amount" />
                                     </Form.Group>
 
                                     <Form.Group>
                                         <Form.Label>Rainfall (R)</Form.Label>
-                                        <Form.Control id="rainfall" onChange={changeHandler} type="number" placeholder="Enter R amount" />
+                                        <Form.Control id="rainfall" onChange={changeHandler} type="number" step=".0001" placeholder="Enter R amount" />
                                     </Form.Group>
 
                                     <Button variant="primary" type="submit">
