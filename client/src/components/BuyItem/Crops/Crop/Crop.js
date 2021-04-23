@@ -7,6 +7,7 @@ import {
 	Row,
 	Carousel,
 	Badge,
+	Alert,
 } from 'react-bootstrap';
 
 import Loading from '../../../Loading/Loading';
@@ -17,6 +18,7 @@ import './Crop.css';
 function Crop() {
 	const countRef = useRef(0);
 	const [crop, setCrop] = useState({});
+	const [error, setError] = useState("");
 	const [counter, setCounter] = useState(0);
 	const dispatch = useDispatch();
 	const buy = useSelector(state => state.buy);
@@ -37,8 +39,16 @@ function Crop() {
 	const counterHandler = () => {
 		a = countRef.current.value;
 		updateBid(a);
-		if (Number(a) > 0) setCounter(Number(a));
+		if (Number(a) > counter) setCounter(Number(a));
+		else {
+			setError(`Please bid a value higher than ${counter}`);
+		}
 	};
+
+	useEffect(() => {
+		setError("");
+	}, [counter]);
+
 
 	const updateBid = a => {
 		if (Number(a) > counter) dispatch(bidPrice(crop._id, Number(a)));
@@ -100,12 +110,18 @@ function Crop() {
 									min={0}
 									max={1000000}
 								/>
-								<button className="btn btn-light bg-color pl-3 pr-3 pt-0 pb-0 ml-1" onClick={counterHandler}>Add</button>								
+								
+								{
+									error &&
+									<Alert className="my-3" variant="danger">
+										{error}
+									</Alert>
+								}
+
+								<button className="btn btn-light bg-color pl-3 pr-3 pt-0 pb-0 ml-1" onClick={counterHandler}>Bid</button>
 							</div>
 						</Col>
 					</Row>
-					<h2>Bid</h2>
-					<div>{counter}</div>
 				</>
 			) : (
 				<Loading />

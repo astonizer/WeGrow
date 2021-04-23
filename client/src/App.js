@@ -16,8 +16,8 @@ import SellItem from './components/SellItem/SellItem';
 import Crop from './components/BuyItem/Crops/Crop/Crop';
 import BuyItem from './components/BuyItem/BuyItem';
 import Donate from './components/Donate/Donate';
-import OptimumCrop from './components/Predict/OptimumCrop';
-import PredictForm from './components/Predict/PredictForm';
+import OptimumCrop from './components/PredictContainer/OptimumCrop';
+import PredictForm from './components/PredictContainer/PredictForm';
 
 function App() {
 	const history = useHistory();
