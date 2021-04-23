@@ -44,4 +44,4 @@ def predictOptimumCrop():
 
 if __name__ == "__main__":
     print("Starting Python Flask Server")
-    app.run(debug=True, port=5001)
+    app.run()
