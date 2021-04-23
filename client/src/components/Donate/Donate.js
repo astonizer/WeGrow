@@ -20,7 +20,7 @@ function Donate() {
 		// Call your backend to create the Checkout Session
 		const response = await axios.post(
 			'/api/checkout',
-			JSON.stringify({ amount: 1000 }),
+			JSON.stringify({ amount }),
 			{
 				headers: {
 					'Content-Type': 'application/json',
@@ -44,8 +44,8 @@ function Donate() {
 
 	return (
 		<div align="center" className="my-5 p-5 container donate">
-			<Form onSubmit={handleClick}>
-				<h1>Donate Money</h1>
+			<Form>
+				<h1>Donate Money ($)</h1>
 				<Form.Group controlId="email">
 					<Form.Control
 						type="number"
@@ -56,7 +56,12 @@ function Donate() {
 						max="1000000000"
 					/>
 				</Form.Group>
-				<Button role="link" variant="btn-light" className="bg-color">
+				<Button
+					role="link"
+					variant="btn-light"
+					className="bg-color"
+					onClick={handleClick}
+				>
 					Donate
 				</Button>
 			</Form>

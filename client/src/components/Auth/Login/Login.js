@@ -22,7 +22,7 @@ function Login({ history }) {
 		dispatch(clearErrors());
 		if (localStorage.getItem('authToken')) {
 			history.push('/profile');
-			alert('logged in');
+			alert('You are now logged in.');
 		}
 	}, [isAuthenticated, history]);
 

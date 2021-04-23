@@ -30,7 +30,8 @@ function Profile() {
 		<div className="profile-main">
 			<Row style={{ margin: 'auto' }}>
 				<Col style={{ margin: 'auto', marginTop: '150px' }}>
-					<Card className="card-profile"
+					<Card
+						className="card-profile"
 						style={{
 							width: '30rem',
 							borderRadius: '30px',
@@ -43,29 +44,33 @@ function Profile() {
 							src={user.profilePicture}
 						/>
 						<div className="profile-card-details">
-							<Card.Body>
-								<Card.Title>My Profile</Card.Title>
-								<br />
-								<br />
-								<Card.Text>
-									<p>{user.username}</p>
-									<hr />
-									<p>{user.email}</p>
-									<hr />
-								</Card.Text>
-								<p>Upload Profile Picture?</p>
-								<FileBase
-									type="file"
-									multiple={false}
-									onDone={handleDone}
-								/>
-								<Button
-									variant="primary"
-									onClick={handleSubmit}
-								>
-									Upload Picture
-								</Button>
-							</Card.Body>
+							{user ? (
+								<Card.Body>
+									<Card.Title>My Profile</Card.Title>
+									<br />
+									<br />
+									<Card.Text>
+										<p>{user.username}</p>
+										<hr />
+										<p>{user.email}</p>
+										<hr />
+									</Card.Text>
+									<p>Upload Profile Picture?</p>
+									<FileBase
+										type="file"
+										multiple={false}
+										onDone={handleDone}
+									/>
+									<Button
+										variant="primary"
+										onClick={handleSubmit}
+									>
+										Upload Picture
+									</Button>
+								</Card.Body>
+							) : (
+								<h1>Loading...</h1>
+							)}
 						</div>
 					</Card>
 				</Col>

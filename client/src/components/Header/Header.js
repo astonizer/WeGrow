@@ -12,95 +12,93 @@ function Header({ history }) {
 
 	const handleLogout = e => {
 		dispatch(logoutUser());
-		alert("logged out");
+		alert('You have logged out.');
 		history.push('/');
 	};
 
 	const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
 	return (
-
 		<>
-			{
-				isAuthenticated ? (
-					<Navbar className="fixed-top" bg="dark" expand="lg">
-						<Navbar.Brand>
-							<Link to='/'>
-								<img className="logo" src={Logo} />
-							</Link>
-						</Navbar.Brand>
-						<Navbar.Toggle aria-controls="basic-navbar-nav" />
-						<Navbar.Collapse id="basic-navbar-nav">
-							<Nav className="mr-auto">
-								<Nav.Link>
-									<Link className="header_link" to="/">
-										Home
-					               </Link>
-								</Nav.Link>
-
-								<Nav.Link>
-									<Link className="header_link" to="/buy">
-										Buy
-					                </Link>
-								</Nav.Link>
-
-								<Nav.Link>
-									<Link className="header_link" to="/sell">
-										Sell
-							       </Link>
-								</Nav.Link>
-
-								<Nav.Link>
-									<Link className="header_link" to="/profile">
-										Profile
-							       </Link>
-								</Nav.Link>
-
-								<Nav.Link>
-									<Link
-										className="header_link"
-										onClick={handleLogout}
-										to="#"
-									>
-										Logout
-					                </Link>
-								</Nav.Link>
-
-							</Nav>
-						</Navbar.Collapse>
-					</Navbar>
-				) : (
-					<Navbar className="fixed-top" bg="dark" expand="lg">
-						<Navbar.Brand>
-							<Link to='/'>
-								<img className="logo" src={Logo} />
-							</Link>
-						</Navbar.Brand>
-						<Navbar.Toggle aria-controls="basic-navbar-nav" />
-						<Navbar.Collapse id="basic-navbar-nav">
-							<Nav className="mr-auto">
-								<Nav.Link>
-									<Link className="header_link" to="/">
-										Home
-					               </Link>
-								</Nav.Link>
-								<Nav.Link>
-									<Link className="header_link" to="/auth/register">
-										Register
+			{isAuthenticated ? (
+				<Navbar className="fixed-top" bg="dark" expand="lg">
+					<Navbar.Brand>
+						<Link to="/">
+							<img className="logo" src={Logo} />
+						</Link>
+					</Navbar.Brand>
+					<Navbar.Toggle aria-controls="basic-navbar-nav" />
+					<Navbar.Collapse id="basic-navbar-nav">
+						<Nav className="mr-auto">
+							<Nav.Link>
+								<Link className="header_link" to="/">
+									Home
 								</Link>
-								</Nav.Link>
+							</Nav.Link>
 
-								<Nav.Link>
-									<Link className="header_link" to="/auth/login">
-										Login
+							<Nav.Link>
+								<Link className="header_link" to="/buy">
+									Buy
 								</Link>
-								</Nav.Link>
-							</Nav>
-						</Navbar.Collapse>
-					</Navbar>
-				)
-			}
+							</Nav.Link>
 
+							<Nav.Link>
+								<Link className="header_link" to="/sell">
+									Sell
+								</Link>
+							</Nav.Link>
+
+							<Nav.Link>
+								<Link className="header_link" to="/profile">
+									Profile
+								</Link>
+							</Nav.Link>
+
+							<Nav.Link>
+								<Link
+									className="header_link"
+									onClick={handleLogout}
+									to="#"
+								>
+									Logout
+								</Link>
+							</Nav.Link>
+						</Nav>
+					</Navbar.Collapse>
+				</Navbar>
+			) : (
+				<Navbar className="fixed-top" bg="dark" expand="lg">
+					<Navbar.Brand>
+						<Link to="/">
+							<img className="logo" src={Logo} />
+						</Link>
+					</Navbar.Brand>
+					<Navbar.Toggle aria-controls="basic-navbar-nav" />
+					<Navbar.Collapse id="basic-navbar-nav">
+						<Nav className="mr-auto">
+							<Nav.Link>
+								<Link className="header_link" to="/">
+									Home
+								</Link>
+							</Nav.Link>
+							<Nav.Link>
+								<Link
+									className="header_link"
+									to="/auth/register"
+								>
+									Register
+								</Link>
+							</Nav.Link>
+
+							<Nav.Link>
+								<Link className="header_link" to="/auth/login">
+									Login
+								</Link>
+							</Nav.Link>
+						</Nav>
+					</Navbar.Collapse>
+				</Navbar>
+			)}
 		</>
 	);
 }

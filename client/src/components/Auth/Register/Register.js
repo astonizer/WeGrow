@@ -25,7 +25,7 @@ function Register({ history }) {
 		dispatch(clearErrors());
 		if (localStorage.getItem('authToken')) {
 			setRegister(true);
-			alert('registered');
+			alert('You are now registered');
 			history.push('/profile');
 		}
 	}, [isAuthenticated, history]);
