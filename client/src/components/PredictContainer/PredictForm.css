@@ -1,12 +1,8 @@
-.predict{
-    background: rgb(16, 185, 129, 0.1);
-}
-
-.sell_item{
+.predict_button{
     background: rgb(16, 185, 129, 0.1);
 	border-color: rgb(107,114,128);
 }
 
-.sell_item:hover{
+.predict_button:hover{
     background: rgb(16, 185, 129);
 }
