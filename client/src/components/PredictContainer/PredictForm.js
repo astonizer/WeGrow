@@ -24,23 +24,23 @@ const PredictForm = () => {
     }
 
     const config = {
-		headers: {
-			'Content-Type': 'application/json',
-		},
-	};
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    };
 
     const submitHandler = (e) => {
         e.preventDefault();
         // console.log(items);
         axios
-        .post('http://127.0.0.1:5001/predict', JSON.stringify(items), config)
-		.then(res => {
-            // console.log(res);
-            console.log('prediction ', res.data.prediction);
-		})
-		.catch(err => {
-            console.log(err);
-		});
+            .post('http://127.0.0.1:5001/predict', JSON.stringify(items), config)
+            .then(res => {
+                // console.log(res);
+                console.log('prediction ', res.data.prediction);
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }
 
 
@@ -48,8 +48,8 @@ const PredictForm = () => {
         <div className="predcit_form">
             <div className="container">
                 <div className="row">
-                    <div style={{ margin: 'auto' }} className="col-lg-4 col-sm-6 col-md-6">
-                        <Card style={{ width: '20rem' }}>
+                    <div style={{ margin: 'auto' }} className="my-5 col-lg-6 col-sm-6 col-md-6">
+                        <Card style={{ width: '20rem', margin: 'auto' }}>
                             <Card.Body>
                                 <Form onSubmit={submitHandler}>
                                     <Form.Group>
@@ -91,6 +91,22 @@ const PredictForm = () => {
                                         Submit
                                    </Button>
                                 </Form>
+                            </Card.Body>
+                        </Card>
+                    </div>
+                </div>
+            </div>
+            <div className="container">
+                <div className="row">
+                    <div style={{margin: 'auto'}} className="my-5 col-lg-6 col-md-6 col-sm-6">
+                        <Card style={{ width: '20rem', margin:'auto' }}>
+                            <Card.Body>
+                                <Card.Title>Your Predicted Crop</Card.Title>
+                                <Card.Text>
+                                    Some quick example text to build on the card title and make up the bulk of
+                                    the card's content.
+                                </Card.Text>
+                                <Button variant="primary">Go somewhere</Button>
                             </Card.Body>
                         </Card>
                     </div>

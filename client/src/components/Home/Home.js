@@ -1,6 +1,7 @@
 import React from 'react';
 import DonateContainer from '../DonateContainer/DonateContainer';
 import Feedback from '../Feedback/Feedback';
+import Predict from '../Predict/Predict';
 import Banner from './Banner/Banner';
 import './Home.css';
 import Testimonials from './Testimonials/Testimonials';
@@ -29,6 +30,9 @@ function Home() {
 				</div>
 				<div className="row">
 					<DonateContainer />
+				</div>
+				<div className="row">
+					<Predict />
 				</div>
 				<div className="row">
 					<Feedback />
