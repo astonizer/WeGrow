@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
-from flask_cors import cross_origin
+from flask_cors import CORS, cross_origin
 import numpy as np
 import pandas as pd
 from sklearn.metrics import classification_report
@@ -24,9 +23,7 @@ def predictOptimumCrop():
     json_data = request.get_json()
     if request.method == 'POST':
         if not json_data:
-            return jsonify({'mess' : 'missing JSON'}), 400
-
-        print(json_data)
+            return jsonify({'success': False}), 400
 
         N = int(json_data.get('nitrogen'))
         P = int(json_data.get('phosphorus'))
@@ -40,10 +37,10 @@ def predictOptimumCrop():
         model_prediction = optimum_crop.predict(feather_input)
         prediction = model_prediction[0]
 
-        return jsonify({'message' : "crop prediction", 'prediction' : prediction})
+        return jsonify({'success' : True , 'prediction' : prediction})
 
     else:
-        return jsonify({prediction: null})
+        return jsonify({'success' : False}), 404
 
 if __name__ == "__main__":
     print("Starting Python Flask Server")

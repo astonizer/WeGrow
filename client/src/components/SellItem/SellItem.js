@@ -3,6 +3,7 @@ import { Button, Container, Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import FileBase from 'react-file-base64';
 import { sellItem } from '../../redux/actions/sellActions';
+import './SellItem.css';
 
 
 function SellItem() {
@@ -82,9 +83,7 @@ function SellItem() {
 						<br />
 						<FileBase type="file" multiple={true} onDone={handleDone} />
 					</Form.Group>
-					<Button variant="primary" type="submit">
-						Submit
-				</Button>
+					<button type="submit" className="btn btn-light sell_item">Submit</button>
 				</Form>
 			</Container>
 		</>
