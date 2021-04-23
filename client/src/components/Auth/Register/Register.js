@@ -15,7 +15,6 @@ function Register({ history }) {
 		password: '',
 	});
 	const error = useSelector(state => state.error.error);
-	const [register, setRegister] = useState(false);
 	const dispatch = useDispatch();
 	const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
@@ -24,11 +23,10 @@ function Register({ history }) {
 	useEffect(() => {
 		dispatch(clearErrors());
 		if (localStorage.getItem('authToken')) {
-			setRegister(true);
 			alert('You are now registered');
 			history.push('/profile');
 		}
-	}, [isAuthenticated, history]);
+	}, [isAuthenticated, history, dispatch]);
 
 	const handleChange = e => {
 		setUser({ ...user, [e.target.id]: e.target.value });
@@ -49,7 +47,11 @@ function Register({ history }) {
 			<div className="container">
 				<div className="row">
 					<div className="col-lg-5 col-md-12 col-sm-12 register_img">
-						<img className="register_img" src={imgR} />
+						<img
+							className="register_img"
+							src={imgR}
+							alt="register_svg"
+						/>
 					</div>
 					<div className="col-lg-6 col-md-12 col-sm-12">
 						<Card className="text-center">

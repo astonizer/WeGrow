@@ -24,44 +24,47 @@ function Header({ history }) {
 				<Navbar className="fixed-top" bg="dark" expand="lg">
 					<Navbar.Brand>
 						<Link to="/">
-							<img className="logo" src={Logo} />
+							<img className="logo" src={Logo} alt="logo" />
 						</Link>
 					</Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="mr-auto">
-							<Nav.Link>
-								<Link className="header_link" to="/">
-									Home
-								</Link>
+							<Nav.Link className="header_link" as={Link} to="/">
+								Home
 							</Nav.Link>
 
-							<Nav.Link>
-								<Link className="header_link" to="/buy">
-									Buy
-								</Link>
+							<Nav.Link
+								className="header_link"
+								as={Link}
+								to="/buy"
+							>
+								Buy
 							</Nav.Link>
 
-							<Nav.Link>
-								<Link className="header_link" to="/sell">
-									Sell
-								</Link>
+							<Nav.Link
+								className="header_link"
+								as={Link}
+								to="/sell"
+							>
+								Sell
 							</Nav.Link>
 
-							<Nav.Link>
-								<Link className="header_link" to="/profile">
-									Profile
-								</Link>
+							<Nav.Link
+								className="header_link"
+								as={Link}
+								to="/profile"
+							>
+								Profile
 							</Nav.Link>
 
-							<Nav.Link>
-								<Link
-									className="header_link"
-									onClick={handleLogout}
-									to="#"
-								>
-									Logout
-								</Link>
+							<Nav.Link
+								className="header_link"
+								as={Link}
+								to="#"
+								onClick={handleLogout}
+							>
+								Logout
 							</Nav.Link>
 						</Nav>
 					</Navbar.Collapse>
@@ -70,30 +73,29 @@ function Header({ history }) {
 				<Navbar className="fixed-top" bg="dark" expand="lg">
 					<Navbar.Brand>
 						<Link to="/">
-							<img className="logo" src={Logo} />
+							<img className="logo" src={Logo} alt="logo" />
 						</Link>
 					</Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="mr-auto">
-							<Nav.Link>
-								<Link className="header_link" to="/">
-									Home
-								</Link>
+							<Nav.Link className="header_link" as={Link} to="/">
+								Home
 							</Nav.Link>
-							<Nav.Link>
-								<Link
-									className="header_link"
-									to="/auth/register"
-								>
-									Register
-								</Link>
+							<Nav.Link
+								className="header_link"
+								as={Link}
+								to="/auth/register"
+							>
+								Register
 							</Nav.Link>
 
-							<Nav.Link>
-								<Link className="header_link" to="/auth/login">
-									Login
-								</Link>
+							<Nav.Link
+								className="header_link"
+								as={Link}
+								to="/auth/login"
+							>
+								Login
 							</Nav.Link>
 						</Nav>
 					</Navbar.Collapse>

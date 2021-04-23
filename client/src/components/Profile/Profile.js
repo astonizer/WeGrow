@@ -24,7 +24,7 @@ function Profile() {
 
 	useEffect(() => {
 		dispatch(fetchProfile(token));
-	}, []);
+	}, [dispatch, token]);
 
 	return (
 		<div className="profile-main">

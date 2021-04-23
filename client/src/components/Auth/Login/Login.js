@@ -24,7 +24,7 @@ function Login({ history }) {
 			history.push('/profile');
 			alert('You are now logged in.');
 		}
-	}, [isAuthenticated, history]);
+	}, [isAuthenticated, history, dispatch]);
 
 	const handleChange = e => {
 		setUser({ ...user, [e.target.id]: e.target.value });
@@ -112,7 +112,11 @@ function Login({ history }) {
 						</Card>
 					</div>
 					<div className="col-lg-5 col-md-12 col-sm-12">
-						<img className="login_img" src={login} />
+						<img
+							className="login_img"
+							src={login}
+							alt="login_svg"
+						/>
 					</div>
 				</div>
 			</div>

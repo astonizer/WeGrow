@@ -14,7 +14,7 @@ function BuyItem() {
 
 	useEffect(() => {
 		dispatch(fetchItems());
-	}, []);
+	}, [dispatch]);
 
 	useEffect(() => {
 		setCrops(buy.items);

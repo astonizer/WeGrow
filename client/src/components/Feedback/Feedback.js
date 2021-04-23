@@ -28,7 +28,7 @@ function Feedback() {
 							/>
 							<label
 								className="form-check-label"
-								for="inlineRadio1"
+								htmlFor="inlineRadio1"
 							>
 								1
 							</label>
@@ -43,7 +43,7 @@ function Feedback() {
 							/>
 							<label
 								className="form-check-label"
-								for="inlineRadio2"
+								htmlFor="inlineRadio2"
 							>
 								2
 							</label>
@@ -58,7 +58,7 @@ function Feedback() {
 							/>
 							<label
 								className="form-check-label"
-								for="inlineRadio3"
+								htmlFor="inlineRadio3"
 							>
 								3
 							</label>
@@ -73,7 +73,7 @@ function Feedback() {
 							/>
 							<label
 								className="form-check-label"
-								for="inlineRadi4"
+								htmlFor="inlineRadi4"
 							>
 								4
 							</label>
@@ -88,13 +88,13 @@ function Feedback() {
 							/>
 							<label
 								className="form-check-label"
-								for="inlineRadio5"
+								htmlFor="inlineRadio5"
 							>
 								5
 							</label>
 						</div>
 						<div className="form-group">
-							<label for="exampleFormControlTextarea1">
+							<label htmlFor="exampleFormControlTextarea1">
 								Description
 							</label>
 							<textarea
@@ -103,7 +103,10 @@ function Feedback() {
 								rows="3"
 							></textarea>
 						</div>
-						<button type="submit" class="btn btn-light bg-color">
+						<button
+							type="submit"
+							className="btn btn-light bg-color"
+						>
 							Submit
 						</button>
 					</form>

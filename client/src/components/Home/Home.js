@@ -4,7 +4,6 @@ import Feedback from '../Feedback/Feedback';
 import Predict from '../Predict/Predict';
 import Banner from './Banner/Banner';
 import './Home.css';
-import Testimonials from './Testimonials/Testimonials';
 
 function Home() {
 	return (

@@ -1,14 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import {
-	Card,
-	Col,
-	Row,
-	Carousel,
-	Badge,
-	Alert,
-} from 'react-bootstrap';
+import { Card, Col, Row, Carousel, Badge, Alert } from 'react-bootstrap';
 
 import Loading from '../../../Loading/Loading';
 import { fetchItems } from '../../../../redux/actions/buyActions';
@@ -18,7 +11,7 @@ import './Crop.css';
 function Crop() {
 	const countRef = useRef(0);
 	const [crop, setCrop] = useState({});
-	const [error, setError] = useState("");
+	const [error, setError] = useState('');
 	const [counter, setCounter] = useState(0);
 	const dispatch = useDispatch();
 	const buy = useSelector(state => state.buy);
@@ -28,12 +21,12 @@ function Crop() {
 	// Fetch Crops
 	useEffect(() => {
 		dispatch(fetchItems());
-	}, []);
+	}, [dispatch]);
 
 	useEffect(() => {
 		setCrop(buy.items[id]);
 		setCounter(buy.items[id]?.buyPrice);
-	}, [buy]);
+	}, [buy, id]);
 
 	// Bidding
 	const counterHandler = () => {
@@ -46,9 +39,8 @@ function Crop() {
 	};
 
 	useEffect(() => {
-		setError("");
+		setError('');
 	}, [counter]);
-
 
 	const updateBid = a => {
 		if (Number(a) > counter) dispatch(bidPrice(crop._id, Number(a)));
@@ -63,9 +55,8 @@ function Crop() {
 							<Card className="crop-card">
 								<div className="crop-inside">
 									<Carousel>
-										{
-											crop?.selectedFile?.map((img, index) => (
-
+										{crop?.selectedFile?.map(
+											(img, index) => (
 												<Carousel.Item key={index}>
 													<img
 														// className="d-block w-100"
@@ -73,9 +64,8 @@ function Crop() {
 														alt="First slide"
 													/>
 												</Carousel.Item>
-
-											))
-										}
+											)
+										)}
 									</Carousel>
 									<Card.Body>
 										<Card.Title>
@@ -110,15 +100,19 @@ function Crop() {
 									min={0}
 									max={1000000}
 								/>
-								
-								{
-									error &&
+
+								{error && (
 									<Alert className="my-3" variant="danger">
 										{error}
 									</Alert>
-								}
+								)}
 
-								<button className="btn btn-light bg-color pl-3 pr-3 pt-0 pb-0 ml-1" onClick={counterHandler}>Bid</button>
+								<button
+									className="btn btn-light bg-color pl-3 pr-3 pt-0 pb-0 ml-1"
+									onClick={counterHandler}
+								>
+									Bid
+								</button>
 							</div>
 						</Col>
 					</Row>

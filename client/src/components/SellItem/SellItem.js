@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { Button, Container, Form } from 'react-bootstrap';
+import { Container, Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import FileBase from 'react-file-base64';
 import { sellItem } from '../../redux/actions/sellActions';
 import './SellItem.css';
 
-
 function SellItem() {
-
 	const [item, setItem] = useState({
 		title: '',
 		description: '',
@@ -29,20 +27,20 @@ function SellItem() {
 	};
 
 	const handleDone = e => {
-
 		let data = [];
-		e.map(({ base64 }) => {
+		// e.map();
+		e.forEach(({ base64 }) => {
 			data.push(base64);
 		});
 		setItem({
 			...item,
-			selectedFile: [...data]
+			selectedFile: [...data],
 		});
 	};
 
 	return (
 		<>
-			<h1 style={{textAlign: 'center'}}>Sell you crops here!!!</h1>
+			<h1 style={{ textAlign: 'center' }}>Sell you crops here!!!</h1>
 			<Container>
 				<Form onSubmit={handleSubmit}>
 					<Form.Group>
@@ -81,9 +79,15 @@ function SellItem() {
 					<Form.Group>
 						<Form.Label>Input File</Form.Label>
 						<br />
-						<FileBase type="file" multiple={true} onDone={handleDone} />
+						<FileBase
+							type="file"
+							multiple={true}
+							onDone={handleDone}
+						/>
 					</Form.Group>
-					<button type="submit" className="btn btn-light sell_item">Submit</button>
+					<button type="submit" className="btn btn-light sell_item">
+						Submit
+					</button>
 				</Form>
 			</Container>
 		</>

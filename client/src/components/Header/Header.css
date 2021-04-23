@@ -15,7 +15,7 @@
 }
 
 .header_link {
-	color: #10b981;
+	color: #10b981 !important;
 	text-decoration: none;
 	font-size: x-large;
 	padding: 10px;
@@ -23,7 +23,7 @@
 
 .header_link:hover {
 	text-decoration: none;
-	color: #26da9e;
+	color: #26da9e !important;
 }
 
 #root > div > nav > div {
