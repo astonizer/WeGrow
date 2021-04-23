@@ -6,5 +6,9 @@ const config = {
 	},
 };
 
+const url = 'http://127.0.0.1:5000/predict';
+
+// const url = 'https://we-grow-model.herokuapp.com/predict';
+
 export const predictOptimumCrop = data =>
-	axios.post('http://127.0.0.1:5001/predict', data, config);
+	axios.post(url, data, config);

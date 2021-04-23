@@ -1,7 +1,9 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
+import { predictOptimumCrop } from '../../api';
 import './PredictForm.css';
+
 
 const PredictForm = () => {
 
@@ -34,8 +36,7 @@ const PredictForm = () => {
     const submitHandler = (e) => {
         e.preventDefault();
         // console.log(items);
-        axios
-            .post('http://127.0.0.1:5001/predict', JSON.stringify(items), config)
+        predictOptimumCrop(items)
             .then(res => {
                 setCrop(res.data.prediction);
             })
