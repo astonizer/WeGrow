@@ -13,6 +13,7 @@ const PredictForm = () => {
         ph: '',
         rainfall: ''
     });
+    const [crop, setCrop] = useState('')
 
     const changeHandler = (e) => {
 
@@ -35,8 +36,7 @@ const PredictForm = () => {
         axios
             .post('http://127.0.0.1:5001/predict', JSON.stringify(items), config)
             .then(res => {
-                // console.log(res);
-                console.log('prediction ', res.data.prediction);
+                setCrop(res.data.prediction);
             })
             .catch(err => {
                 console.log(err);
@@ -101,12 +101,7 @@ const PredictForm = () => {
                     <div style={{margin: 'auto'}} className="my-5 col-lg-6 col-md-6 col-sm-6">
                         <Card style={{ width: '20rem', margin:'auto' }}>
                             <Card.Body>
-                                <Card.Title>Your Predicted Crop</Card.Title>
-                                <Card.Text>
-                                    Some quick example text to build on the card title and make up the bulk of
-                                    the card's content.
-                                </Card.Text>
-                                <Button variant="primary">Go somewhere</Button>
+                                <Card.Title>Optimal Crop is {crop}</Card.Title>
                             </Card.Body>
                         </Card>
                     </div>
