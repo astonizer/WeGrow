@@ -36,9 +36,9 @@ def predictOptimumCrop():
         feather_input = np.array([[N, P, K, temperature, humidity, ph, rainfall]])
         model_prediction = optimum_crop.predict(feather_input)
         prediction = model_prediction[0]
-
-        return jsonify({'success' : True , 'prediction' : prediction})
-
+        prediction = optimum_crop.predict(feather_input)[0]
+        resultt = jsonify({'success' : True , 'prediction' : prediction})
+        return resultt
     else:
         return jsonify({'success' : False}), 404
 
